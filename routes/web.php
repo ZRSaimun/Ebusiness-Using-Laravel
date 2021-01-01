@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/admin','adminController@adminDashboard')->name('adminDashboard');
+//Route::get('/adminLogin','loginController@adminLogin')->name('adminLogin');
+//Route::get('/logout','logoutController@index')->name('logout');
