@@ -128,7 +128,7 @@
                                         Reports
                     
                                     </a>
-                                    <a class="nav-link" href="/admin/adminRegi">
+                                    <a class="nav-link" href="{{route('adminRegistration')}}">
                                         
                                         Admin Regi 
                                     </a>

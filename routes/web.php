@@ -17,6 +17,8 @@ Route::get('/admin','adminController@adminDashboard')->name('adminDashboard');
 Route::get('/adminLogin','loginController@adminLogin')->name('adminLogin');
 Route::post('/adminLogin','loginController@verifyAdmin');
 
+Route::get('/admin/adminRegi','adminRegistrationController@adminRegistrationview')->name('adminRegistration');
+Route::post('/admin/adminRegi','adminRegistrationController@adminRegistration');
 Route::get('/admin/retail/regi','adminRegistrationController@registrationOfSellerRView')->name('registrationOfSellerR');
 Route::post('/admin/retail/regi','adminRegistrationController@registrationOfSellerR');
 Route::get('/logout','logoutController@index')->name('logout');

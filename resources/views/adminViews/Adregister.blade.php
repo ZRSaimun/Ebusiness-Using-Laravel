@@ -25,6 +25,7 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Admin Registration</h3></div>
                                     <div class="card-body">
                                         <form method="POST">
+                                            @csrf
                                             <div class="form-row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
