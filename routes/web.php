@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/admin','adminController@adminDashboard')->name('adminDashboard');
 Route::get('/adminLogin','loginController@adminLogin')->name('adminLogin');
+Route::post('/adminLogin','loginController@verifyAdmin');
+
+Route::get('/admin/retail/regi','adminRegistrationController@registrationOfSellerRView')->name('registrationOfSellerR');
+Route::post('/admin/retail/regi','adminRegistrationController@registrationOfSellerR');
 Route::get('/logout','logoutController@index')->name('logout');
 
 Route::get('/admin/profile','adminController@adminProfile')->name('adminProfile');

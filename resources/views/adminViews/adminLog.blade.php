@@ -13,6 +13,7 @@
 				</div>
 
 				<form class="login100-form validate-form" method="POST">
+					@csrf
 					<span class="login100-form-title">
 						Admin Login
 					</span>

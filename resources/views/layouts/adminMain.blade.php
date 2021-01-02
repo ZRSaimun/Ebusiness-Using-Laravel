@@ -121,7 +121,7 @@
                                       
                                     </a>
                 
-                                    <a class="nav-link" href="/admin/registrationRetailer">
+                                    <a class="nav-link" href="{{route('registrationOfSellerR')}}">
                                         Retailer registration
                                     </a>
                                     <a class="nav-link" href="/admin/report">

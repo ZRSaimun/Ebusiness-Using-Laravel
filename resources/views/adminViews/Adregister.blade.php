@@ -17,16 +17,7 @@
                 <main>
                     
                     <div class="container">
-                        <% if(typeof alert != 'undefined') { %>
-                            <% alert.forEach(function(error) { %>
-                                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                    <%= error.msg %>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                            <% }) %>
-                        <% } %>
+                       
                         <div class="row justify-content-center">
                             
                             <div class="col-lg-7">
