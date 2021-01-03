@@ -188,66 +188,56 @@
                             {{$items->exclusive}}
                         </td>
                         <td>
-                            <a href="{{$items->product_id}}" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#deleteProductID{{$items->product_id}}">Delete
+                            <a href="reviewProduct/{{$items->product_id }}" class="btn btn-success" ">Details
                             </a>
                         </td>
-                        <td>
-                            <div class="modal fade" id="deleteProductID{{$items->product_id}}" data-bs-backdrop="static"
-                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="staticBackdropLabel">Delete Product</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form method="POST" enctype="multipart/form-data">
-                                                {{csrf_field()}}
-                                                <div>
 
-                                                    <h3>Are you Sure? {{$items->product_id}}</h3>
-
-                                                    <input type="hidden" name="productID"
-                                                        value="{{$items->product_id}}">
-                                                </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">No</button>
-                                            <button type="submit" class="btn btn-primary">Yes</button>
-                                        </div>
-                                        </form>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
 
 
                     </tr>
                     @endforeach
                 </table>
                 @if(Session::has('status'))
-                <div class="alert alert-success" role="alert" style="width:20%">
-                    {{ Session::get('status') }}
-                </div>
-                @endif
+                <div class=" alert alert-success" role="alert" style="width:20%">
+                                {{ Session::get('status') }}
             </div>
+            @endif
         </div>
+    </div>
 
 
-        <!-- MODALLLLLLL-->
+    <!-- MODALLLLLLL-->
 
-        <!-- Modal -->
+    <!-- Modal -->
 
 
-        <script src="/js/jquery.min.js "></script>
-        <script src="/js/popper.js "></script>
-        <script src="/js/bootstrap.min.js "></script>
-        <script src="/js/main.js "></script>
+    <script src="/js/jquery.min.js "></script>
+    <script src="/js/popper.js "></script>
+    <script src="/js/bootstrap.min.js "></script>
+    <script src="/js/main.js "></script>
+    <script>
+    $("#publishedForm").submit(function(e) {
+        e.preventDefault();
+
+        let product_id = $($productID).val();
+        let __token = $("input[name=__token]").val();
+
+        $.ajax({
+            type: "POST",
+            url: 'seller/editProduct',
+            data: {
+                product_id = product_id,
+                __token = __token
+            },
+            success: function(response) {
+                if (response) {
+                    console.log(response);
+                }
+            }
+
+        });
+    });
+    </script>
 </body>
 
 </html>

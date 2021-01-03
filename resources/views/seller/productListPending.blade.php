@@ -131,69 +131,54 @@
         <div id="content" class="p-4 p-md-5">
             <div align="center">
                 <span align="center">
-                    <h3>All Products</h3>
+                    <h3>Pending Orders</h3>
                 </span>
                 <table class="table" border="1px" style="width:70%;height:80%">
                     <tr>
-                        <th width="10%">Image</th>
-                        <th width="30%">productID</th>
-                        <th width="30%">Name</th>
-                        <th width="30%">Quantity</th>
-                        <th width="20%">price</th>
-                        <th width="20%">Catagory</th>
-                        <th width="30%">Rating</th>
-                        <th width="30%">Description</th>
-                        <th width="30%">Published</th>
-                        <th width="30%">exclusive</th>
-                        <th width="20%">Action</th>
+                        <th width="10%">Order Id</th>
+                        <th width="10%">Product ID</th>
+                        <th width="10%">Customer Id</th>
+                        <th width="10%">Quantity</th>
+                        <th width="20%">Status</th>
+                        <th width="10%">Paid</th>
+                        <th width="15%">Order Date</th>
+                        <th width="10%">Seller Revenue</th>
+                        <th width="10%">Status</th>
                     </tr>
 
-                    @foreach ($product as $items)
+                    @foreach ($orderList as $items)
                     <tr>
                         <td>
-                            <img align="center" src="/upload/{{$items->product_img }}" alt="logo" height="100px"
-                                width="100px" />
+                            {{$items->order_id }}
                         </td>
                         <td>
-                            <a href="/seller/detailProduct/{{$items->product_id}}">
-                                {{$items->product_id }}
-                            </a>
-
+                            {{$items->product_id }}
                         </td>
                         <td>
-                            {{$items->product_name}}
+                            {{$items->customer_id }}
                         </td>
                         <td>
-                            {{$items->quantity}}
+                            {{$items->quantity }}
                         </td>
                         <td>
-                            {{$items->price}}
+                            {{$items->order_status }}
                         </td>
                         <td>
-                            {{$items->catagory_id}}
+                            {{$items->paid }}
                         </td>
                         <td>
-                            {{$items->average_rating}}
+                            {{$items->date }}
                         </td>
                         <td>
-                            <span>
-                                {{$items->description}}
-                            </span>
-
+                            {{$items->seller_revenue }}
                         </td>
                         <td>
-                            {{$items->published}}
-                        </td>
-                        <td>
-                            {{$items->exclusive}}
-                        </td>
-                        <td>
-                            <a href="{{$items->product_id}}" class="btn btn-success" data-bs-toggle="modal"
-                                data-bs-target="#deleteProductID{{$items->product_id}}">Delete
+                            <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#deleteProductID{{$items->order_id}}">Deliverd
                             </a>
                         </td>
                         <td>
-                            <div class="modal fade" id="deleteProductID{{$items->product_id}}" data-bs-backdrop="static"
+                            <div class="modal fade" id="deleteProductID{{$items->order_id}}" data-bs-backdrop="static"
                                 data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
@@ -204,14 +189,14 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="POST" enctype="multipart/form-data">
+                                            <form method="POST" id="publishedForm" enctype="multipart/form-data">
                                                 {{csrf_field()}}
                                                 <div>
 
-                                                    <h3>Are you Sure? {{$items->product_id}}</h3>
+                                                    <h3>Are you Sure? {{$items->order_id}}</h3>
 
-                                                    <input type="hidden" name="productID"
-                                                        value="{{$items->product_id}}">
+                                                    <input type="hidden" name="orderID" id="orderID"
+                                                        value="{{$items->order_id}}">
                                                 </div>
                                         </div>
                                         <div class="modal-footer">

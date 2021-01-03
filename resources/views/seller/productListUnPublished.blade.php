@@ -131,7 +131,7 @@
         <div id="content" class="p-4 p-md-5">
             <div align="center">
                 <span align="center">
-                    <h3>UnPublished Products</h3>
+                    <h3>Unpublished Products</h3>
                 </span>
                 <table class="table" border="1px" style="width:70%;height:80%">
                     <tr>
@@ -151,7 +151,7 @@
                     @foreach ($product as $items)
                     <tr>
                         <td>
-                            <img align="center" src="{{$items->product_img }}" alt="logo" height="100px"
+                            <img align="center" src="/upload/{{$items->product_img }}" alt="logo" height="100px"
                                 width="100px" />
                         </td>
                         <td>

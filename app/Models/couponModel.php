@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Models\seller;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class sellerpi extends Model
+class couponModel extends Model
 {
     use HasFactory;
-    protected $table = "sellerpi";
-    protected $primaryKey = "seller_id ";
+    protected $table = "coupon";
+    protected $primaryKey = "coupon_id ";
     public $timestamp = false;
 }

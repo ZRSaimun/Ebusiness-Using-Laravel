@@ -151,7 +151,7 @@
                     @foreach ($product as $items)
                     <tr>
                         <td>
-                            <img align="center" src="{{$items->product_img }}" alt="logo" height="100px"
+                            <img align="center" src="/upload/{{$items->product_img }}" alt="logo" height="100px"
                                 width="100px" />
                         </td>
                         <td>
@@ -204,13 +204,13 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="POST" enctype="multipart/form-data">
+                                            <form method="POST" id="publishedForm" enctype="multipart/form-data">
                                                 {{csrf_field()}}
                                                 <div>
 
                                                     <h3>Are you Sure? {{$items->product_id}}</h3>
 
-                                                    <input type="hidden" name="productID"
+                                                    <input type="hidden" name="productID" id="productID"
                                                         value="{{$items->product_id}}">
                                                 </div>
                                         </div>
@@ -248,6 +248,29 @@
         <script src="/js/popper.js "></script>
         <script src="/js/bootstrap.min.js "></script>
         <script src="/js/main.js "></script>
+        <script>
+        $("#publishedForm").submit(function(e) {
+            e.preventDefault();
+
+            let product_id = $($productID).val();
+            let __token = $("input[name=__token]").val();
+
+            $.ajax({
+                type: "POST",
+                url: 'seller/editProduct',
+                data: {
+                    product_id = product_id,
+                    __token = __token
+                },
+                success: function(response) {
+                    if (response) {
+                        console.log(response);
+                    }
+                }
+
+            });
+        });
+        </script>
 </body>
 
 </html>
