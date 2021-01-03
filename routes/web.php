@@ -2,7 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 //use app\Http\Controllers\loginC;
-
+/*	
+|--------------------------------------------------------------------------	
+| Web Routes	
+|--------------------------------------------------------------------------	
+|	
+| Here is where you can register web routes for your application. These	
+| routes are loaded by the RouteServiceProvider within a group which	
+| contains the "web" middleware group. Now create something great!	
+|	
+*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -57,5 +66,3 @@ Route::group(['middleware' => ['session']], function () {
     Route::get('/seller/reportCustomer/{customerID}', 'seller\sellController@reportCustomerDetails');
     Route::post('/seller/reportCustomer/{customerID}', 'seller\sellController@reportCustomer');
 });
-
-/*Route::get('/home', 'seller\homeController@index')->middleware('session');*/
