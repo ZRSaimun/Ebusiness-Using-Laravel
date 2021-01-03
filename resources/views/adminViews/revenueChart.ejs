@@ -1,0 +1,169 @@
+<style>
+    .center {
+
+margin: auto;
+
+width: 60%;
+
+
+
+padding: 10px;
+
+}
+</style>
+
+
+<body>
+    <input type="hidden" id="pm" value="<%= revDate.priviousMonth %> "> 
+        <input type="hidden" id="pm1" value="<%= revDate.priviousMonth1 %> "> 
+        <input type="hidden" id="pm2" value="<%= revDate.priviousMonth2 %> "> 
+        <input type="hidden" id="rev" value="<%= rev.month1 %> "> 
+        <input type="hidden" id="rev1" value="<%= rev.month2 %> "> 
+        <input type="hidden" id="rev2" value="<%= rev.month3 %> "> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    //values
+
+    const pm = $('#pm').val()
+    const pm1 = $('#pm1').val()
+    const pm2 = $('#pm2').val()
+    var rev = $('#rev').val()
+    var rev1 = $('#rev1').val()
+    var rev2 = $('#rev2').val()
+
+    rev = rev*.01;
+    rev1 = rev1*.01;
+    rev2 = rev2*.01;
+    
+
+    
+      google.charts.load('current', {'packages':['corechart']});
+
+      
+      google.charts.setOnLoadCallback(drawChart);
+
+     
+      function drawChart() {
+
+        
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Months');
+        data.addColumn('number', 'Revenue');
+        data.addRows([
+          [pm, rev],
+          [pm1, rev1],
+          [pm2, rev2]
+        
+        ]);
+       
+
+        // Set chart options
+        var options = {'title':'Revenues of Past Three Months',
+                       'width':600,
+                       'height':400};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+      
+    </script>
+
+
+  
+    <!--Div that will hold the pie chart-->
+    <div class="center">
+        <div id="chart_div" class="center"></div>
+
+    </div>
+    <div class="center">
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Months</th>
+                <th>Revenue</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Months</th>
+                <th>Revenue</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr>
+                <td><%=revDate.priviousMonth%></td>
+                <td><%=rev.month1%></td>
+                
+            </tr>
+            <tr>
+                <td><%=revDate.priviousMonth1%></td>
+                <td><%=rev.month2%></td>
+            </tr>
+            <tr>
+                <td><%=revDate.priviousMonth2%></td>
+                <td><%=rev.month3%></td>
+            </tr>
+        </tbody>
+    
+    </table>
+    
+    <input type="button" id="button" class="btn btn-success" value="Genarate"/>
+    <div>
+
+        <script>
+                
+            $('#button').click(function() {
+                
+                var doc = new jsPDF();
+
+            const c1 = $('#pm').val()+$('#rev').val()
+            const c2 = $('#pm1').val()+$('#rev1').val()
+            const c3 = $('#pm2').val()+$('#rev2').val()
+
+            const a1 = $('#pm').val()
+            const a2 = $('#pm1').val()
+            const a3 = $('#pm2').val()
+
+            const b1 = $('#rev').val()
+            const b2 = $('#rev1').val()
+            const b3 = $('#rev2').val()
+
+            doc.setFontSize(40)
+            doc.text(85, 20, 'Ebazar')
+
+            doc.setFontSize(10)
+            doc.text(80, 30, 'Company Sales Report Revenue')
+
+            doc.setFontSize(10)
+            doc.text(84.4, 33, ' ebazar96960@gmail.com')
+
+            doc.setFontSize(10)
+            doc.text(85, 36, 'website: www.ebazar.com')
+
+            doc.setFontSize(10)
+            doc.text(87, 39, 'contact: 01900000000')
+
+            doc.setFontSize(10)
+            doc.text(30, 70, `${a1}-----------------------------------------------------------------------------------------------------${b1}`)
+
+            doc.setFontSize(10)
+            doc.text(30, 75, `${a2}-------------------------------------------------------------------------------------------------${b2}`)
+
+            doc.setFontSize(10)
+            doc.text(30, 80, `${a3}-----------------------------------------------------------------------------------------------------${b3}`)
+
+           
+            doc.save('Revenu Report.pdf');
+           
+          
+
+
+            });
+    </script>
+    
+    
+    
+  </body>
