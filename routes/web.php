@@ -1,10 +1,17 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
 //use app\Http\Controllers\loginC;
-
-
+/*	
+|--------------------------------------------------------------------------	
+| Web Routes	
+|--------------------------------------------------------------------------	
+|	
+| Here is where you can register web routes for your application. These	
+| routes are loaded by the RouteServiceProvider within a group which	
+| contains the "web" middleware group. Now create something great!	
+|	
+*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -14,6 +21,7 @@ Route::get('/', function () {
 
 Route::get('/login', 'seller\loginController@index');
 Route::post('/login', 'seller\loginController@verify');
+Route::get('/logout', 'seller\logoutController@index')->name('logout');
 
 
 Route::group(['middleware' => ['session']], function () {
@@ -58,14 +66,3 @@ Route::group(['middleware' => ['session']], function () {
     Route::get('/seller/reportCustomer/{customerID}', 'seller\sellController@reportCustomerDetails');
     Route::post('/seller/reportCustomer/{customerID}', 'seller\sellController@reportCustomer');
 });
-
-/*Route::get('/home', 'seller\homeController@index')->middleware('session');*/
-
-Route::get('/admin','adminController@adminDashboard')->name('adminDashboard');
-Route::get('/adminLogin','loginController@adminLogin')->name('adminLogin');
-Route::get('/logout','logoutController@index')->name('logout');
-
-Route::get('/admin/profile','adminController@adminProfile')->name('adminProfile');
-Route::get('/admin/profile/PersonalInfo','adminController@editAdminPresonalInfo')->name('editAdminPresonalInfo');
-Route::get('/admin/profile/pic','adminController@editAdminProfilePic')->name('editAdminProfilePic');
-
