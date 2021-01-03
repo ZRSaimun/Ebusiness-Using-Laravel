@@ -89,6 +89,33 @@ class adminController extends Controller
         return view('adminViews.sellerList')->with('admin',$admin)->with('seller',$seller);
     }
 
+    public function blockingSeller(Request $req){
+        $id = $req->get('userId');
+        $seller = sellerpiModel::where('user_id',$id)
+                                ->first();
+                                   
+                if ($seller->block_status==0) {
+                    $seller->block_status = 1;
+                    if($seller->save()){
+                        return response()->json([
+                            'success' => 'Unblock'
+                        ]);
+                    }else{
+                        return back();
+                    }
+                }else{
+                    $seller->block_status = 0;
+                    if($seller->save()){
+                        return response()->json([
+                            'success' => 'block'
+                        ]);
+                    }else{
+                        return back();
+                    }
+                }
+  
+    }
+
     
 
 }

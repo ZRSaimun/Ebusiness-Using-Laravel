@@ -65,15 +65,15 @@
                                                     <td>{{$seller[$i]['phone_no']}}</td>
                                                     <td>{{$seller[$i]['level']}}</td>
                                                     
-                                                    <td><input id="dltSeller{{$seller[$i]['seller_id']}}"  type="button" class="btn btn-danger" data-value={{$seller[$i]['seller_id']}} value="Delete"\></td>
+                                                    <td><input id="dltSeller{{$seller[$i]['user_id']}}"  type="button" class="btn btn-danger" data-value="{{$seller[$i]['user_id']}}" value="Delete"\></td>
 
                                             
                                                         @if($seller[$i]['block_status']==0)
-                                                             <td><button id="blockSeller{{$seller[$i]['user_id']}}"  type="button" class="btn btn-warning" data-value=>block</button></td>
+                                                             <td><button id="blockSeller{{$seller[$i]['user_id']}}"  type="button" class="btn btn-warning" data-value="{{$seller[$i]['user_id']}}">block</button></td>
                                                         @endif
 
                                                         @if($seller[$i]['block_status']==1)
-                                                            <td><button id="blockSeller{{$seller[$i]['user_id']}}"  type="button" class="btn btn-warning" data-value=>Unblock</button></td>
+                                                            <td><button id="blockSeller{{$seller[$i]['user_id']}}"  type="button" class="btn btn-warning" data-value="{{$seller[$i]['user_id']}}">Unblock</button></td>
                                                          @endif
                                                     
                                                        
@@ -101,12 +101,11 @@
                                        
                                         $.ajax({  
                                                 url:'/admin/seller/blocking',  
-                                                method:'post',  
+                                                method:'get',  
                                                 data:{'userId':Id},
                                                 contentType: "application/x-www-form-urlencoded",  
                                                 success:function(response){ 
-                                                    
-                                                    $(elementId).html(`${response.bs}`)
+                                                    $(elementId).html(`${response.success}`)
                                                     
                                                 },  
                                                 error:function(response){  
