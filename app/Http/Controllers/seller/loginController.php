@@ -20,8 +20,11 @@ class loginController extends Controller
 
     public function verify(Request $req)
     {
-
-        $user = userModel::where('email', $req->username)->where('password', $req->password)->first();
+        $validationData = $req->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:3|max:12'
+        ]);
+        $user = userModel::where('email', $req->email)->where('password', $req->password)->first();
         //echo $user;
         if ($user['password'] == $req->password) {
             $req->session()->put('user', $user['user_id']);
