@@ -21,7 +21,7 @@ Ebusiness
 
 There are 4 types of users Retail-Seller,Admin,Customer & Seller
 
-#Retail-Seller 
+## Retail-Seller 
 
 Retail-Seller DashBoard
 
