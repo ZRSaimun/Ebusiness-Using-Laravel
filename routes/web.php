@@ -19,4 +19,7 @@ Route::get('/logout','logoutController@index')->name('logout');
 
 Route::get('/admin/profile','adminController@adminProfile')->name('adminProfile');
 Route::get('/admin/profile/PersonalInfo','adminController@editAdminPresonalInfo')->name('editAdminPresonalInfo');
-Route::get('/admin/profile/pic','adminController@editAdminProfilePic')->name('editAdminProfilePic');
+Route::get('/admin/profile/pic','adminController@editAdminProfilePic')->name('editAdminProfilePic'); 
+
+
+//test
