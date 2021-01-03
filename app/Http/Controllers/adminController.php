@@ -116,6 +116,16 @@ class adminController extends Controller
   
     }
 
+    public function deleteSeller(Request $req){
+        $id = $req->get('userId');
+        sellerpiModel::where('user_id',$id)->delete($id);
+        
+        return response()->json([
+            'success' => 'deleted'
+        ]);              
+
+    }
+
     
 
 }

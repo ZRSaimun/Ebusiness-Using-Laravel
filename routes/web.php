@@ -31,4 +31,5 @@ Route::post('/admin/profile/pic','adminController@editAdminProfilePic');
 
 Route::get('/admin/seller','adminController@sellerListView')->name('sellerListView');
 Route::get('/admin/seller/blocking','adminController@blockingSeller');
+Route::get('/admin/seller/delete','adminController@deleteSeller');
 

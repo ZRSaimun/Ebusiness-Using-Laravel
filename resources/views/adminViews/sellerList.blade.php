@@ -57,7 +57,7 @@
                                         </tfoot>
                                         <tbody>
                                         @for($i=0; $i < count($seller); $i++)
-                                                <tr id="dlt{{$seller[$i]['seller_id']}}">
+                                                <tr id="dlt{{$seller[$i]['user_id']}}">
                                                     <td>{{$seller[$i]['name']}}</td>
                                                     <td>{{$seller[$i]['email']}}</td>
                                                     <td>{{$seller[$i]['address']}}</td>
@@ -116,21 +116,21 @@
                                     });
 
                                     $('input').click(function (e) {
-                                            var Id =$(this).data("value") 
+                                            var Id =$(this).data("value");
                                             var elementId = `#dlt${Id}`;
                                             
                                        
                                         $.ajax({  
                                                 url:'/admin/seller/delete',  
-                                                method:'post',  
+                                                method:'get',  
                                                 data:{'userId':Id},
                                                 contentType: "application/x-www-form-urlencoded",  
                                                 success:function(response){ 
-                                                    
-                                                    $(elementId).remove()
+                                                    alert(elementId);
+                                                    $(elementId).remove();
                                                      setTimeout(()=> { 
                                                         $('#dlt').addClass('alert alert-warning')
-                                                        $('.alert').append(`${response.sd}`);
+                                                        $('.alert').append(`${response.success}`);
                                                         setTimeout(() => {
                                                             $('.alert').remove();
                                                         }, 1500);
