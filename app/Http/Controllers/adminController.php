@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\adminpiModel;
 
 class adminController extends Controller
 {
@@ -10,16 +11,67 @@ class adminController extends Controller
         return view('adminViews.admindash');
     }
 
-    public function adminProfile(){
-        return view('adminViews.profile');
+    public function adminProfile(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('user'))
+                                        ->where('password',$req->session()->get('pass'))
+                                        ->get();
+        return view('adminViews.profile')->with('admin',$admin);
     }
 
-    public function editAdminPresonalInfo(){
-        return view('adminViews.editPersonal');
+    public function AdminPresonalInfo(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('user'))
+                                        ->where('password',$req->session()->get('pass'))
+                                        ->get();
+                                       
+        return view('adminViews.editPersonal')->with('admin',$admin);
     }
 
-    public function editAdminProfilePic(){
-        return view('adminViews.editProfilePic');
+    public function editAdminPresonalInfo(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('user'))
+                                        ->where('password',$req->session()->get('pass'))
+                                        ->first();
+
+                                        $admin->name            = $req->name; 
+                                        $admin->email           = $req->email;
+                                        $admin->password        = $req->password;
+                                        $admin->phone_no        = $req->phone_no;
+                        
+                                        if ($admin->save()) {
+                                           return redirect()->route('adminProfile');
+                                        }else{
+                                            return back();
+                                        }
+    }
+
+    public function adminProfilePic(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('user'))
+                                        ->where('password',$req->session()->get('pass'))
+                                        ->get();
+        return view('adminViews.editProfilePic')->with('admin',$admin);
+    }
+
+    public function editAdminProfilePic(Request $req){
+        if ($req->hasFile('myPic')) {
+            $file = $req->file('myPic');
+
+            if($file->move('upload', $file->getClientOriginalName())){
+        		
+                $admin = adminpiModel::where('email',$req->session()->get('user'))
+                                        ->where('password',$req->session()->get('pass'))
+                                        ->first();
+                
+                $admin->profile_pic  = $file->getClientOriginalName();
+
+                if($admin->save()){
+                    return redirect()->route('adminProfile');
+                }else{
+                    return back();
+                }
+
+        	}else{
+        		return back();
+        	}
+        }
     }
 
 }

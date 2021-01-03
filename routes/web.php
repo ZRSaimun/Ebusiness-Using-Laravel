@@ -24,5 +24,7 @@ Route::post('/admin/retail/regi','adminRegistrationController@registrationOfSell
 Route::get('/logout','logoutController@index')->name('logout');
 
 Route::get('/admin/profile','adminController@adminProfile')->name('adminProfile');
-Route::get('/admin/profile/PersonalInfo','adminController@editAdminPresonalInfo')->name('editAdminPresonalInfo');
-Route::get('/admin/profile/pic','adminController@editAdminProfilePic')->name('editAdminProfilePic');
+Route::get('/admin/profile/PersonalInfo','adminController@AdminPresonalInfo')->name('AdminPresonalInfo');
+Route::post('/admin/profile/PersonalInfo','adminController@editAdminPresonalInfo');
+Route::get('/admin/profile/pic','adminController@adminProfilePic')->name('AdminProfilePic');
+Route::post('/admin/profile/pic','adminController@editAdminProfilePic');

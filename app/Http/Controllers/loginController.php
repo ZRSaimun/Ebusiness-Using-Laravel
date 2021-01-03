@@ -18,6 +18,7 @@ class loginController extends Controller
                 if(count($admin) > 0){
                     $req->session()->put('user', $req->email);
                     $req->session()->put('type', $req->email);
+                    $req->session()->put('pass', $req->pass);
                     $req->session()->put('logged', 'logged');
                     
                     return redirect()->route('adminDashboard');
