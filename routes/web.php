@@ -70,7 +70,7 @@ Route::group(['middleware' => ['session']], function () {
 
 
 
-
+//ADMIN
 Route::get('/admin','adminController@adminDashboard')->name('adminDashboard');
 Route::get('/adminLogin','loginController@adminLogin')->name('adminLogin');
 Route::post('/adminLogin','loginController@verifyAdmin');
@@ -92,3 +92,6 @@ Route::get('/admin/seller','adminController@sellerListView')->name('sellerListVi
 Route::get('/admin/seller/blocking','adminController@blockingSeller');
 Route::get('/admin/seller/delete','adminController@deleteSeller');
 
+
+Route::get('/adminLogin/github','loginController@githubloginSocialAdmin')->name('adminSocialLogin');
+Route::get('/adminLogin/github/redirect','loginController@githubloginSocialRedirectAdmin')->name('adminSocialLoginRedirect');
