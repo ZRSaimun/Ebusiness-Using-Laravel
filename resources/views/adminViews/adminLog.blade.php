@@ -13,6 +13,7 @@
 				</div>
 
 				<form class="login100-form validate-form" method="POST">
+					@csrf
 					<span class="login100-form-title">
 						Admin Login
 					</span>
@@ -38,10 +39,12 @@
 							Login
 						</button>
 					</div>
-
-					
-
-					
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							login with GitHub
+						</button>
+					</div>
+	
 				</form>
 			</div>
 		</div>

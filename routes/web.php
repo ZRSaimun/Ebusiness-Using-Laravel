@@ -63,9 +63,18 @@ Route::group(['middleware' => ['session']], function () {
 
 Route::get('/admin','adminController@adminDashboard')->name('adminDashboard');
 Route::get('/adminLogin','loginController@adminLogin')->name('adminLogin');
+Route::post('/adminLogin','loginController@verifyAdmin');
+
+Route::get('/admin/adminRegi','adminRegistrationController@adminRegistrationview')->name('adminRegistration');
+Route::post('/admin/adminRegi','adminRegistrationController@adminRegistration');
+Route::get('/admin/retail/regi','adminRegistrationController@registrationOfSellerRView')->name('registrationOfSellerR');
+Route::post('/admin/retail/regi','adminRegistrationController@registrationOfSellerR');
 Route::get('/logout','logoutController@index')->name('logout');
 
 Route::get('/admin/profile','adminController@adminProfile')->name('adminProfile');
-Route::get('/admin/profile/PersonalInfo','adminController@editAdminPresonalInfo')->name('editAdminPresonalInfo');
-Route::get('/admin/profile/pic','adminController@editAdminProfilePic')->name('editAdminProfilePic');
+
+Route::get('/admin/profile/PersonalInfo','adminController@AdminPresonalInfo')->name('AdminPresonalInfo');
+Route::post('/admin/profile/PersonalInfo','adminController@editAdminPresonalInfo');
+Route::get('/admin/profile/pic','adminController@adminProfilePic')->name('AdminProfilePic');
+Route::post('/admin/profile/pic','adminController@editAdminProfilePic');
 
