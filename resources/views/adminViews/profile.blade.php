@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Campus Ecomm</title>
+    <title>Ebazar</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -42,7 +42,10 @@
  <!-- Start My Account  -->
 <div class="my-account-box-main">
     <div class="container">
-    <h1> Profile </h1>
+    <img class='centerIMG' src="{{asset('upload/'.$admin[0]['profile_pic'])}}" width="80px" height="80px"><br>
+     
+                    
+    <h1><a href="{{route('adminDashboard')}}"> <i class="fa fa-home"></i> </a> Profile </h1>
         <div class="my-account-page">
             
             <div class="row">
@@ -50,7 +53,7 @@
                     <div class="account-box">
                         <div class="service-box">
                             <div class="service-icon">
-                                <a href="{{route('editAdminPresonalInfo')}}"> <i class="fa fa-lock"></i> </a>
+                                <a href="{{route('AdminPresonalInfo')}}"> <i class="fa fa-lock"></i> </a>
                             </div>
                             <div class="service-desc">
                                 <h4>Personal Information</h4>
@@ -63,7 +66,7 @@
                     <div class="account-box">
                         <div class="service-box">
                             <div class="service-icon">
-                                <a href="{{route('editAdminProfilePic')}}"> <i class="fa fa-user"></i> </a>
+                                <a href="{{route('AdminProfilePic')}}"> <i class="fa fa-user"></i> </a>
                             </div>
                             <div class="service-desc">
                                 <h4>Profile Picture</h4>

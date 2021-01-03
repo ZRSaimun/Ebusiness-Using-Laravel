@@ -17,16 +17,7 @@
                 <main>
                     
                     <div class="container">
-                        <% if(typeof alert != 'undefined') { %>
-                            <% alert.forEach(function(error) { %>
-                                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                    <%= error.msg %>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                            <% }) %>
-                        <% } %>
+                       
                         <div class="row justify-content-center">
                             
                             <div class="col-lg-7">
@@ -34,6 +25,7 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Admin Registration</h3></div>
                                     <div class="card-body">
                                         <form method="POST">
+                                            @csrf
                                             <div class="form-row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -62,6 +54,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block">Create Account</button></div>
+                                            
                                         </form>
                                     </div>
                                     
