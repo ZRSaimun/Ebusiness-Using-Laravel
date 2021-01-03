@@ -12,23 +12,23 @@ class adminController extends Controller
     }
 
     public function adminProfile(Request $req){
-        $admin = adminpiModel::where('email',$req->session()->get('user'))
-                                        ->where('password',$req->session()->get('pass'))
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
                                         ->get();
         return view('adminViews.profile')->with('admin',$admin);
     }
 
     public function AdminPresonalInfo(Request $req){
-        $admin = adminpiModel::where('email',$req->session()->get('user'))
-                                        ->where('password',$req->session()->get('pass'))
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
                                         ->get();
                                        
         return view('adminViews.editPersonal')->with('admin',$admin);
     }
 
     public function editAdminPresonalInfo(Request $req){
-        $admin = adminpiModel::where('email',$req->session()->get('user'))
-                                        ->where('password',$req->session()->get('pass'))
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
                                         ->first();
 
                                         $admin->name            = $req->name; 
@@ -44,8 +44,8 @@ class adminController extends Controller
     }
 
     public function adminProfilePic(Request $req){
-        $admin = adminpiModel::where('email',$req->session()->get('user'))
-                                        ->where('password',$req->session()->get('pass'))
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
                                         ->get();
         return view('adminViews.editProfilePic')->with('admin',$admin);
     }
@@ -56,8 +56,8 @@ class adminController extends Controller
 
             if($file->move('upload', $file->getClientOriginalName())){
         		
-                $admin = adminpiModel::where('email',$req->session()->get('user'))
-                                        ->where('password',$req->session()->get('pass'))
+                $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
                                         ->first();
                 
                 $admin->profile_pic  = $file->getClientOriginalName();

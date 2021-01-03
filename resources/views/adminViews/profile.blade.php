@@ -42,8 +42,10 @@
  <!-- Start My Account  -->
 <div class="my-account-box-main">
     <div class="container">
-    <img class='centerIMG' src="{{asset('upload/'.$admin[0]['profile_pic'])}}" width="80px" height="80px">
-    <h1> Profile </h1>
+    <img class='centerIMG' src="{{asset('upload/'.$admin[0]['profile_pic'])}}" width="80px" height="80px"><br>
+     
+                    
+    <h1><a href="{{route('adminDashboard')}}"> <i class="fa fa-home"></i> </a> Profile </h1>
         <div class="my-account-page">
             
             <div class="row">
