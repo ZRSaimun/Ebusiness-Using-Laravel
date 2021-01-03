@@ -126,7 +126,6 @@
                                                 data:{'userId':Id},
                                                 contentType: "application/x-www-form-urlencoded",  
                                                 success:function(response){ 
-                                                    alert(elementId);
                                                     $(elementId).remove();
                                                      setTimeout(()=> { 
                                                         $('#dlt').addClass('alert alert-warning')

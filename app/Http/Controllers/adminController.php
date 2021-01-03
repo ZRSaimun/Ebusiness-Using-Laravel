@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\adminpiModel;
 use App\Models\sellerpiModel;
+use App\Models\userModel;
 
 class adminController extends Controller
 {
@@ -119,6 +120,7 @@ class adminController extends Controller
     public function deleteSeller(Request $req){
         $id = $req->get('userId');
         sellerpiModel::where('user_id',$id)->delete($id);
+        userModel::where('user_id',$id)->delete($id);
         
         return response()->json([
             'success' => 'deleted'
