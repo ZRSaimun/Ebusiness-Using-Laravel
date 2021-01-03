@@ -28,3 +28,6 @@ Route::get('/admin/profile/PersonalInfo','adminController@AdminPresonalInfo')->n
 Route::post('/admin/profile/PersonalInfo','adminController@editAdminPresonalInfo');
 Route::get('/admin/profile/pic','adminController@adminProfilePic')->name('AdminProfilePic');
 Route::post('/admin/profile/pic','adminController@editAdminProfilePic');
+
+Route::get('/admin/seller','adminController@sellerListView')->name('sellerListView');
+

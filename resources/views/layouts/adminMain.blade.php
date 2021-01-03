@@ -27,7 +27,8 @@
             <!-- Navbar-->
             <ul class="navbar-nav ml-auto ml-md-0">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img id="navProfilepic" src="/public/admin/uploads/sampleFile.jpg" alt=""></a>
+                    <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img id="navProfilepic" src="{{asset('upload/'.$admin[0]['profile_pic'])}}"width="40px" height="40px" alt=""></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="/admin/profile">Profile</a>
                         <a class="dropdown-item" href="/history">Activity Log</a>
@@ -77,7 +78,7 @@
                                     <div class="collapse" id="pagesCollapseSeller" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="/admin/seller/addSeller"><i class="fa fa-plus fa-sm"></i>add seller</a>
-                                            <a class="nav-link" href="/admin/seller">seller List</a>
+                                            <a class="nav-link" href="{{route('sellerListView')}}">seller List</a>
                                         </nav>
                                     </div>
 
@@ -154,7 +155,7 @@
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
   
-                        <%=loogedName%>
+                        {{$admin[0]['name']}}
                     </div>
                 </nav>
             </div>

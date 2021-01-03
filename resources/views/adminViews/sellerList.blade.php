@@ -1,4 +1,6 @@
+@extends('layouts.adminMain')
 
+@section('content')
  
     
                 <main>
@@ -54,30 +56,30 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <% sellerInfo.forEach(s=>{ %>
-                                                <tr id="dlt<%= s.id %>">
-                                                    <td><%= s.name %> </td>
-                                                    <td><%= s.email %></td>
-                                                    <td><%= s.address %></td>
-                                                    <td><%= moment(s.dob).format(shortDateFormat) %></td>
-                                                    <td><%= s.phone_no %></td>
-                                                    <td><%= s.level %></td>
+                                        @for($i=0; $i < count($seller); $i++)
+                                                <tr id="dlt{{$seller[$i]['seller_id']}}">
+                                                    <td>{{$seller[$i]['name']}}</td>
+                                                    <td>{{$seller[$i]['email']}}</td>
+                                                    <td>{{$seller[$i]['address']}}</td>
+                                                    <td>{{$seller[$i]['dob']}}</td>
+                                                    <td>{{$seller[$i]['phone_no']}}</td>
+                                                    <td>{{$seller[$i]['level']}}</td>
                                                     
-                                                    <td><input id="dltSeller<%= s.user_id %>"  type="button" class="btn btn-danger" data-value=<%= s.user_id %> value="Delete"\></td>
+                                                    <td><input id="dltSeller{{$seller[$i]['seller_id']}}"  type="button" class="btn btn-danger" data-value={{$seller[$i]['seller_id']}} value="Delete"\></td>
 
-                                                    
-                                                         
-                                                       <% if(s.block_status==0){%>
-                                                        
-                                                        <td><button id="blockSeller<%= s.user_id %>"  type="button" class="btn btn-warning" data-value=<%= s.user_id %> >block</button></td>
-                                                        <%}else{%>
-                                                            <td><button id="blockSeller<%= s.user_id %>"  type="button" class="btn btn-warning" data-value=<%= s.user_id %> >Unblock</button></td>
-                                                            <%} %> 
+                                            
+                                                        @if($seller[$i]['block_status']==0)
+                                                             <td><button id="blockSeller{{$seller[$i]['user_id']}}"  type="button" class="btn btn-warning" data-value=>block</button></td>
+                                                        @endif
+
+                                                        @if($seller[$i]['block_status']==1)
+                                                            <td><button id="blockSeller{{$seller[$i]['user_id']}}"  type="button" class="btn btn-warning" data-value=>Unblock</button></td>
+                                                         @endif
                                                     
                                                        
                                                     
                                                 </tr>
-                                           <% }) %> 
+                                        @endfor
                                            
                                         </tbody>
                                     </table>
@@ -145,4 +147,4 @@
                     
 
                 </script>
-                
+ @endSection

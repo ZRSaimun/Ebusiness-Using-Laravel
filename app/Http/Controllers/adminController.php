@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\adminpiModel;
+use App\Models\sellerpiModel;
 
 class adminController extends Controller
 {
-    public function adminDashboard(){
-        return view('adminViews.admindash');
+    public function adminDashboard(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
+                                        ->get();
+        return view('adminViews.admindash')->with('admin',$admin);
     }
 
     public function adminProfile(Request $req){
@@ -73,5 +77,18 @@ class adminController extends Controller
         	}
         }
     }
+
+    
+
+    public function sellerListView(Request $req){
+        
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
+                                        ->get();
+        $seller = sellerpiModel::all();
+        return view('adminViews.sellerList')->with('admin',$admin)->with('seller',$seller);
+    }
+
+    
 
 }
