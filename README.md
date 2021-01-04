@@ -19,3 +19,7 @@ Succesfully add product page
 Rivew Product Page
 
 ![Screenshot_10](https://user-images.githubusercontent.com/60029434/103557473-77d32f80-4edd-11eb-8be2-304cf0ffd808.jpg)
+
+view Review Massage
+
+![Screenshot_11](https://user-images.githubusercontent.com/60029434/103557881-0778de00-4ede-11eb-8fa3-ebdf536b5208.jpg)
