@@ -15,3 +15,7 @@ Retail-Seller DashBoard
 Succesfully add product page
 
 ![Screenshot_9](https://user-images.githubusercontent.com/60029434/103486457-49dfe380-4e28-11eb-8eeb-b0500f7c24cc.jpg)
+
+Rivew Product Page
+
+![Screenshot_10](https://user-images.githubusercontent.com/60029434/103557473-77d32f80-4edd-11eb-8be2-304cf0ffd808.jpg)
