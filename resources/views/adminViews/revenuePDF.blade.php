@@ -1,6 +1,4 @@
-@extends('layouts.adminMain')
 
-@section('content')
 <style>
     .center {
 
@@ -13,6 +11,21 @@ width: 60%;
 padding: 10px;
 
 }
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;}
 </style>
 
 
@@ -82,40 +95,34 @@ padding: 10px;
 
     </div>
     <div class="center">
-    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Months</th>
-                <th>Revenue</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>Months</th>
-                <th>Revenue</th>
-            </tr>
-        </tfoot>
-        <tbody>
-            <tr>
-                <td>{{$revv[1]['priviousMonth']}}</td>
-                <td>{{$revv[0]['month1']}}</td>
-                
-            </tr>
-            <tr>
-                <td>{{$revv[1]['priviousMonth1']}}</td>
-                <td>{{$revv[0]['month2']}}</td>
-            </tr>
-            <tr>
-                <td>{{$revv[1]['priviousMonth2']}}</td>
-                <td>{{$revv[0]['month3']}}</td>
-            </tr>
-        </tbody>
-    
-    </table>
-    
-    <a href="{{route('revenueGenaratePDF')}}" type="button" id="button" class="btn btn-success">Genarate</a>
+    <div class="table100"><center><h3> Revenue Report </h3></center>
+    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>Months</th>
+                                            <th>Revenue</th>
+                                        </tr>
+                                        </thead>
+                                       
+                                        <tbody>
+                                            <tr>
+                                                <td>{{$revv[1]['priviousMonth']}}</td>
+                                                <td>{{$revv[0]['month1']}}</td>
+                                                
+                                            </tr>
+                                            <tr>
+                                                <td>{{$revv[1]['priviousMonth1']}}</td>
+                                                <td>{{$revv[0]['month2']}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{$revv[1]['priviousMonth2']}}</td>
+                                                <td>{{$revv[0]['month3']}}</td>
+                                            </tr>
+                                        </tbody>
+                                  
+					</table>
     <div>
 
     
   </body>
-  @endSection
+ 

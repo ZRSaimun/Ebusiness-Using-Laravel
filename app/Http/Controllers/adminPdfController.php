@@ -20,6 +20,14 @@ class adminPdfController extends Controller
         return $pdf->download('customers.pdf');
     }
 
+    public function index1()
+    {
+        $jsonString = file_get_contents(base_path('resources/lang/revenue.json'));
+        $data       = json_decode($jsonString, true);
+        
+        $pdf= PDF::loadView('adminViews.revenuePDF',['revv'=>$data]);
+        return $pdf->download('revenue.pdf');
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -115,3 +115,5 @@ Route::get('/admin/getCustomerPDF','adminPdfController@index')->name('customerPD
 Route::get('/admin/list/catagory','adminController@aCatagoryView')->name('aCatagoryView');
 Route::get('/admin/revenue','adminController@revenueView')->name('revenueView');
 
+Route::get('/admin/revenueGenarate','adminPdfController@index1')->name('revenueGenaratePDF');
+

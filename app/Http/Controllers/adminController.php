@@ -307,6 +307,10 @@ class adminController extends Controller
             $reve= json_decode($response->getBody(), true);
             $revv=json_decode($reve, true);
             //dd($revv[1]['priviousMonth']);
+
+            $newJsonString = json_encode($revv, JSON_PRETTY_PRINT);
+
+            file_put_contents(base_path('resources/lang/revenue.json'), stripslashes($newJsonString));
         return view('adminViews.revenueChart')->with('admin',$admin)->with('revv',$revv);
         } else {
             echo "Not get";
