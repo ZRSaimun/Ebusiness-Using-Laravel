@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Wishlist</title>
+  <title>Cart</title>
     
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
      --><link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
@@ -116,7 +116,7 @@
                                     @endif                               
                         @endforeach 
                         <td>
-                            <a href="/customer/remove_from_cart/<%= std.cart_id %>">Remove </a>
+                            <a href="/remove_from_cart/{{ $std->cart_id }}">Remove </a>
                         </td>
                     </tr>
                   @endforeach
@@ -128,7 +128,7 @@
                     <h4 class="d-inline-block"><b>Total Price: </b>{{ $total }}</h4>
                 </div> 
                 <div class="col-sm-2">
-                    <button onclick="document.location='/customer/cart/<%= custid %>'" type="button" class="d-inline-block btn btn-primary">Confirm and Order</button>
+                    <button onclick="document.location='/confirm_cart/{{ $custid }}'" type="button" class="d-inline-block btn btn-primary">Confirm and Order</button>
                 </div>
         </form>
   </div>

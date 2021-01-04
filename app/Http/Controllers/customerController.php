@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\DB;
 use Validator;
+use App\Models\orderlist;
 
 class customerController extends Controller
 {
@@ -71,7 +72,7 @@ class customerController extends Controller
                 ->get(); 
 
         return view('customerViews.cart')
-                ->with('cart', $cart)->with('prodlist', $prodlist);
+                ->with('cart', $cart)->with('prodlist', $prodlist)->with('custid', $custid);
     }
 
 
@@ -157,12 +158,63 @@ class customerController extends Controller
 
     public function cancelOrder($id){
         $deleted = DB::delete('delete from orderlist where order_id = ?',[$id]);
-        
+
         if($deleted){
                 return redirect()->route('customer.pending_orders');
         }else{
                 echo "ERROR";
         }
     }
+
+    public function removeFromCart($id){
+        $deleted = DB::delete('delete from cart where cart_id = ?',[$id]);
+        
+        if($deleted){
+                return redirect()->route('customer.cart');
+        }else{
+                echo "ERROR";
+        }
+    }
+
+    public function confirmCart($custid){
+
+        $data = DB::table('cart')
+        ->where('customer_id', $custid)
+        ->get();
+
+        foreach ($data as $row) {
+
+                $pid = $row->product_id;
+                $dt = DB::table('product')
+                        ->select('user_id')
+                        ->where('product_id', $pid)
+                        ->first();
+
+                //print_r($dt->user_id);
+                $orderlist = new orderlist();
+                $orderlist->customer_id     = $custid;
+                $orderlist->user_id         = $dt->user_id;
+                $orderlist->product_id      = $pid;
+                $orderlist->quantity        = $row->quantity;
+                $orderlist->order_status    = "pending"; 
+                $orderlist->date            = date("Y-m-d");
+
+                if($orderlist->save()){
+                        //$deleted = DB::delete('delete from cart where cart_id = ?',[$id]);
+                        return redirect()->route('customer.pending_orders');
+                }else{
+                        return back();
+                }
+
+        }
+    }
+
+
+
+
+
+
+
+
 
 }

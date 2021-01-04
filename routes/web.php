@@ -32,6 +32,10 @@ Route::post('/settings','customerController@updateAccountInfo')->name('customer.
 Route::get('/report','customerController@reportProblem')->name('customer.report');
 
 Route::get('/cancelorder/{id}','customerController@cancelOrder');
+Route::get('/remove_from_cart/{id}','customerController@removeFromCart');
+Route::get('/confirm_cart/{id}','customerController@confirmCart');
+
+
 
 
 
