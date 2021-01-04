@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>Account Settings</title>
     
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
     <link rel="stylesheet" href="{{asset('customerStatic/css/customer.css')}}">
@@ -76,21 +79,30 @@
 
 
     <div class="container-fluid">
-      <h4 style="text-align:center">Update account info.</h4>
-      
-      <h5 style="text-align:left" id="msg"></h5>
-      <br>
+      <h4 style="text-align:center">Update account info.</h4><br>
       
       @if (count($errors) > 0)
-      <h5 align="center" style="color: red">
-            <div class="alert alert-danger alert-block">
+      <h5 align="center">
+          @foreach($errors->all() as $error)
+            <div class="alert alert-danger alert-block">             
                 <button type="button" class="close" data-dismiss="alert">×</button>
-                <strong>{{ session('msg') }}</strong>
+                <strong>{{ $error }}</strong>              
+            </div>
+          @endforeach
+      </h5>
+      @endif
+
+      @if (session('update_msg'))
+      <h5 align="center">
+            <div class="alert alert-success alert-block">             
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <strong>{{ session('update_msg') }}</strong>              
             </div>
       </h5>
       @endif
 
-        <form method="post"> 
+        <form method="post" enctype="multipart/form-data"> 
+          {{ csrf_field() }}
             <div class="form-group">
                 <label for="formGroupExampleInput2">Full Name</label>
                  <input type="text" class="form-control" id="formGroupExampleInput2" name="name" value="{{ $info['name'] }}">
@@ -108,7 +120,7 @@
                 <input class="form-control" type="tel" name="phoneno" value="{{ $info['phone_no'] }}" id="example-tel-input">
             <div><br>  
             <div class="form-group">
-                <label for="formGroupExampleInput2">Change Profile Picture</label>
+                <label for="formGroupExampleInput2">Change Profile Picture</label> (max: 2 MB)
                 <input class="form-control" type="file" name="image" id="example-tel-input">
             <div><br> 
             <div  class="form-group col-sm-offset-11 col-sm-10">

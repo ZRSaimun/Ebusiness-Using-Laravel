@@ -82,9 +82,14 @@
 
 
     <div class="container-fluid">
+
+      <h5 style="text-align:center">
+        <img src="{{asset('customerPP/'.$custInfo['profile_pic'])}}" style="max-height: 150px; max-width: 150px;">
+      </h5>
       <h1 style="text-align:center">Welcome {{$custInfo['name']}}!</h1>
       <h5 style="text-align:center">This is your Dashboard.</h5>
       <p><br><br>
+
         <table class="table table-borderless">
             <thead>
               <tr>

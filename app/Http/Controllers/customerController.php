@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\DB;
+use Validator;
 
 class customerController extends Controller
 {
@@ -98,15 +99,61 @@ class customerController extends Controller
                 ->first(); 
 
         $custInfo = (array) $data;
-        //print_r($data);
 
         return view('customerViews.settings')
                 ->with('info', $custInfo);
     }
 
-
     public function reportProblem(){
             return view('customerViews.report_problem');
     }
+
+
+
+    public function updateAccountInfo(Request $req){
+        $custid = $req->session()->get('customerid'); 
+
+        $validation = Validator::make($req->all(), [
+            'name' => 'required|min:3|max:50',
+            'address'=> 'required|max:50',
+            'dob' => 'required',
+            'phoneno' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:6|max:15',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        ]); 
+
+
+        if($validation->fails()){
+                return back()
+                        ->with('errors', $validation->errors())
+                        ->withInput();
+        }else{
+                $file = $req->file('image');
+                $originalFileName = $file->getClientOriginalName();
+                $fileName = 'customerid_' . $custid . '_' . $originalFileName;
+
+        	if($file->move('customerPP', $fileName)){
+
+                        $name            = $req->name;
+                        $address         = $req->address;
+                        $dob             = $req->dob;
+                        $phoneNo         = $req->phoneno;
+                        $profilePic      = $fileName;
+
+                        $updated = DB::update('update customerpi set name = ?,address=?,dob=?,phone_no=?,profile_pic=? where customer_id = ?',[$name,$address,$dob,$phoneNo,$fileName,$custid]);
+
+                        if($updated){
+                                $req->session()->flash('update_msg', 'Success! Your account info updated.');
+                                return redirect()->route('customer.settings');
+                        }else{
+                                $req->session()->flash('update_msg', 'Nothing to update. Try renaming your image file');
+                                return redirect()->route('customer.settings');
+                        }  
+                }else{
+                        echo "upload error.";
+                }              
+        }
+    }
+
+
 
 }
