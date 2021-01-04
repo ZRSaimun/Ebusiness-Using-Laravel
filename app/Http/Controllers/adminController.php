@@ -246,4 +246,33 @@ class adminController extends Controller
         return view('adminViews.customer')->with('admin',$admin)->with('customer', $customer);
     }
 
+    public function customerBanView(Request $req,$id){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                ->where('password',$req->session()->get('addminpass'))
+                                ->get();
+        $customer = customerpiModel::where('customer_id',$id)
+                                    ->get();
+
+        return view('adminViews.customerBan')->with('admin',$admin)->with('customer', $customer);
+    }
+
+    public function customerBan(Request $req,$id){
+        $customer = customerpiModel::where('customer_id',$id)
+                                    ->first();
+        $customer->block_status= 1;
+        if ($customer->save()) {
+            return redirect()->route('customerView');
+        }
+
+    }
+
+    public function customerUnban(Request $req,$id){
+        $customer = customerpiModel::where('customer_id',$id)
+                                    ->first();
+        $customer->block_status= 0;
+        if ($customer->save()) {
+            return redirect()->route('adminDashboard');
+        }
+    }
+
 }

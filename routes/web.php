@@ -106,3 +106,7 @@ Route::post('/admin/event/addEvent','adminController@addEvent');
 Route::get('/admin/event','adminController@eventView')->name('eventView');
 
 Route::get('/admin/customer','adminController@customerView')->name('customerView');
+Route::get('/admin/customer/{id}','adminController@customerBanView')->name('customerBanView');
+Route::post('/admin/customer/{id}','adminController@customerBan');
+Route::get('/admin/customer/unban/{id}','adminController@customerUnban')->name('customerUnban');
+

@@ -13,17 +13,18 @@
                                     <div class="card-body">
                                         <div class="small mb-3 text-muted">Customer Banning for 1 day</div>
                                         <form method="POST">
+                                            @csrf
                                             <div class="form-group">
                                                 <label class="small mb-1">Name</label>
-                                                <input class="form-control py-4"  type="eName" placeholder="Event Name" readonly value="<%= customer.name %> " />
+                                                <input class="form-control py-4"  type="name" placeholder="Name" readonly value="{{$customer[0]['name']}}" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" >Membership Status</label>
-                                                <input class="form-control py-4" type="edescription" readonly placeholder="Description" value="<%= customer.membership_status %> " />
+                                                <input class="form-control py-4" type="edescription" readonly placeholder="Description" value="{{$customer[0]['membership_status']}}" />
                                             </div>
                                             
                                                 <label class="small mb-1" >Shopping Points</label>
-                                                <input class="form-control py-4" type="text" readonly value="<%= customer.shopping_point %> "/>
+                                                <input class="form-control py-4" type="text" readonly value="{{$customer[0]['shopping_point']}}"/>
                                         
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <button type="submit" class="btn btn-warning">Ban</button>

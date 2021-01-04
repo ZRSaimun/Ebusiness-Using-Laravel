@@ -9,5 +9,5 @@ class customerpiModel extends Model
 {
     protected $table = "customerpi";
     protected $primaryKey = "customer_id";
-    public $timestamp = false;
+    public $timestamps = false;
 }

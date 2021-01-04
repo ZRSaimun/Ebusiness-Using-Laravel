@@ -57,10 +57,10 @@
                                                         <td>{{$customer[$i]['shopping_point']}}</td>
                                                         <td>{{$customer[$i]['phone_no']}}</td>
                                                         @if($customer[$i]['block_status'] == 0)
-                                                        <td> <a class="btn btn-danger" href="/admin/customer/{{$customer[$i]['name']}}">BAN</a></td>
+                                                        <td> <a class="btn btn-danger" href="/admin/customer/{{$customer[$i]['customer_id']}}">BAN</a></td>
                                                         @endif
                                                         @if($customer[$i]['block_status'] == 1)
-                                                        <td> <a class="btn btn-warning" href="/admin/customer/unban/{{$customer[$i]['name']}}">undo</a></td>
+                                                        <td> <a class="btn btn-warning" href="/admin/customer/unban/{{$customer[$i]['customer_id']}}">undo</a></td>
                                                         @endif
                                                 </tr>
                                            @endfor  
