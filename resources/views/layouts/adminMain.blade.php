@@ -77,7 +77,7 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseSeller" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="/admin/seller/addSeller"><i class="fa fa-plus fa-sm"></i>add seller</a>
+                                            <a class="nav-link" href="{{route('adminAddSellerView')}}"><i class="fa fa-plus fa-sm"></i>add seller</a>
                                             <a class="nav-link" href="{{route('sellerListView')}}">seller List</a>
                                         </nav>
                                     </div>

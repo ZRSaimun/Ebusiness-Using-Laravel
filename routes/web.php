@@ -91,6 +91,8 @@ Route::post('/admin/profile/pic','adminController@editAdminProfilePic');
 Route::get('/admin/seller','adminController@sellerListView')->name('sellerListView');
 Route::get('/admin/seller/blocking','adminController@blockingSeller');
 Route::get('/admin/seller/delete','adminController@deleteSeller');
+Route::get('/admin/seller/add','adminController@adminAddSellerView')->name('adminAddSellerView');
+Route::post('/admin/seller/add','adminController@adminAddSeller');
 
 
 Route::get('/adminLogin/github','loginController@githubloginSocialAdmin')->name('adminSocialLogin');
