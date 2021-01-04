@@ -6,7 +6,7 @@
     
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css'>
-    <link rel="stylesheet" href="/public/css/customer.css">
+    <link rel="stylesheet" href="{{asset('customerStatic/css/customer.css')}}">
 
 </head>
 <body>
@@ -15,41 +15,42 @@
   <!-- Sidebar -->
   <div id="sidebar">
     <header>
-      <img src="/public/logo.png" height="50" weight="70">
+      <!-- <a href="#">My App</a> -->
+      <img src="{{asset('ebazarLogo.png')}}" height="50" weight="70">
     </header>
     <ul class="nav">
       <li>
-        <a href="/customer">
+        <a href="{{route('customer.index')}}">
           <i class="zmdi zmdi-view-dashboard"></i> Dashboard
         </a>
       </li>
       <li>
-        <a href="/customer/pending_order">
+        <a href="{{route('customer.pending_orders')}}">
           <i class="zmdi zmdi-view-list-alt"></i> Pending Orders
         </a>
       </li>
       <li>
-        <a href="/customer/order_history">
+        <a href="{{route('customer.order_history')}}">
           <i class="zmdi zmdi-check-all"></i> Order History
         </a>
       </li>
       <li>
-        <a href="/customer/cart">
+        <a href="{{route('customer.cart')}}">
           <i class="zmdi zmdi-shopping-cart"></i> Cart
         </a>
       </li>
       <li>
-        <a href="/customer/wishlist">
+        <a href="{{route('customer.wishlist')}}">
           <i class="zmdi zmdi-collection-plus"></i> Wishlist
         </a>
       </li>
       <li>
-        <a href="/customer/settings">
+        <a href="{{route('customer.settings')}}">
           <i class="zmdi zmdi-settings"></i> Account Settings
         </a>
       </li>
       <li class="active">
-        <a href="/customer/report_problem">
+        <a href="{{route('customer.report')}}">
           <i class="zmdi zmdi-info-outline"></i> Report a problem
         </a>
       </li>

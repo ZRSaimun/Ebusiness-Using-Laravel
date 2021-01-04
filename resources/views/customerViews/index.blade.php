@@ -20,37 +20,37 @@
     </header>
     <ul class="nav">
       <li class="active">
-        <a href="/customer">
+        <a href="{{route('customer.index')}}">
           <i class="zmdi zmdi-view-dashboard"></i> Dashboard
         </a>
       </li>
       <li>
-        <a href="/customer/pending_order">
+        <a href="{{route('customer.pending_orders')}}">
           <i class="zmdi zmdi-view-list-alt"></i> Pending Orders
         </a>
       </li>
       <li>
-        <a href="/customer/order_history">
+        <a href="{{route('customer.order_history')}}">
           <i class="zmdi zmdi-check-all"></i> Order History
         </a>
       </li>
       <li>
-        <a href="/customer/cart">
+        <a href="{{route('customer.cart')}}">
           <i class="zmdi zmdi-shopping-cart"></i> Cart
         </a>
       </li>
       <li>
-        <a href="/customer/wishlist">
+        <a href="{{route('customer.wishlist')}}">
           <i class="zmdi zmdi-collection-plus"></i> Wishlist
         </a>
       </li>
       <li>
-        <a href="/customer/settings">
+        <a href="{{route('customer.settings')}}">
           <i class="zmdi zmdi-settings"></i> Account Settings
         </a>
       </li>
       <li>
-        <a href="/customer/report_problem">
+        <a href="{{route('customer.report')}}">
           <i class="zmdi zmdi-info-outline"></i> Report a problem
         </a>
       </li>
@@ -60,7 +60,7 @@
         <ul class="nav">
         <li class="footer">
             <i class="zmdi account-circle"></i>
-            Signed in as <%= dt.email %> 
+            Signed in as {{$custInfo['email']}} 
         </li>
     </ul>
     </footer>
@@ -82,7 +82,7 @@
 
 
     <div class="container-fluid">
-      <h1 style="text-align:center">Welcome <%= dt.name %>!</h1>
+      <h1 style="text-align:center">Welcome {{$custInfo['name']}}!</h1>
       <h5 style="text-align:center">This is your Dashboard.</h5>
       <p><br><br>
         <table class="table table-borderless">
@@ -96,16 +96,16 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row"><%= dt.customerid %> </th>
+                <th scope="row">{{$custInfo['customer_id']}} </th>
                 <td>
-                    <% if(dt.blockstatus>0){ %>
+                    @if($custInfo['block_status']>0) 
                         blocked
-                    <% }else{ %>
+                    @else
                         valid
-                    <% } %>
+                    @endif
                 </td>
-                <td><%= dt.membershipstatus %> </td>
-                <td><%= dt.shoppingpoint %> </td>
+                <td>{{$custInfo['membership_status']}}</td>
+                <td>{{$custInfo['shopping_point']}}</td>
               </tr>
             </tbody>
           </table>

@@ -27,7 +27,10 @@ class loginController extends Controller
     		$req->session()->put('email', $arrUserData['email']);
             $req->session()->put('type', $arrUserData['type']);
 
-    		return redirect()->route('customer.index');
+            if($req->session()->get('type') == 'customer'){
+                return redirect()->route('customer.index');
+            }
+    		
     	}else{
     		$req->session()->flash('msg', 'Invalid Email/password. Try again!');
     		return redirect('/login');
