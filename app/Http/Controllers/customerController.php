@@ -155,5 +155,14 @@ class customerController extends Controller
     }
 
 
+    public function cancelOrder($id){
+        $deleted = DB::delete('delete from orderlist where order_id = ?',[$id]);
+        
+        if($deleted){
+                return redirect()->route('customer.pending_orders');
+        }else{
+                echo "ERROR";
+        }
+    }
 
 }

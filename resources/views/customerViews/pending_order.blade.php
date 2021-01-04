@@ -103,7 +103,7 @@
 
                         <td>{{ $std->quantity }}</td>
                         <td>{{ $std->date }}</td>
-                        <td><a href="/customer/cancelorder/<%= std.order_id %>">Cancel</a></td>
+                        <td><a href="/cancelorder/{{ $std->order_id }}">Cancel</a></td>
                     </tr>
                 @endforeach 
             </tbody>

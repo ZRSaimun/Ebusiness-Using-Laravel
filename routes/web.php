@@ -26,9 +26,14 @@ Route::get('/pending_orders','customerController@pendingOrders')->name('customer
 Route::get('/order_history','customerController@orderHistory')->name('customer.order_history');
 Route::get('/cart','customerController@cart')->name('customer.cart');
 Route::get('/wishlist','customerController@wishlist')->name('customer.wishlist');
+
 Route::get('/settings','customerController@settings')->name('customer.settings');
 Route::post('/settings','customerController@updateAccountInfo')->name('customer.updateAccountInfo');
 Route::get('/report','customerController@reportProblem')->name('customer.report');
+
+Route::get('/cancelorder/{id}','customerController@cancelOrder');
+
+
 
 
 
