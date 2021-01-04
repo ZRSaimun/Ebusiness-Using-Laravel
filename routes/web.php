@@ -71,9 +71,14 @@ Route::group(['middleware' => ['session']], function () {
 
 
 //ADMIN
-Route::get('/admin','adminController@adminDashboard')->name('adminDashboard');
 Route::get('/adminLogin','loginController@adminLogin')->name('adminLogin');
 Route::post('/adminLogin','loginController@verifyAdmin');
+
+Route::get('/adminLogin/github','loginController@githubloginSocialAdmin')->name('adminSocialLogin');
+Route::get('/adminLogin/github/redirect','loginController@githubloginSocialRedirectAdmin')->name('adminSocialLoginRedirect');
+
+Route::group(['middleware' => ['adminVerifyy']], function () {
+Route::get('/admin','adminController@adminDashboard')->name('adminDashboard')->middleware('adminRoute');
 
 Route::get('/admin/adminRegi','adminRegistrationController@adminRegistrationview')->name('adminRegistration');
 Route::post('/admin/adminRegi','adminRegistrationController@adminRegistration');
@@ -97,10 +102,6 @@ Route::post('/admin/seller/add','adminController@adminAddSeller');
 Route::get('/admin/retailManager','adminController@adminRetailView')->name('adminRetailView');
 Route::get('/admin/retailManager/delete','adminController@deleteRetail');
 
-Route::get('/adminLogin/github','loginController@githubloginSocialAdmin')->name('adminSocialLogin');
-Route::get('/adminLogin/github/redirect','loginController@githubloginSocialRedirectAdmin')->name('adminSocialLoginRedirect');
-
-
 Route::get('/admin/event/addEvent','adminController@addEventView')->name('addEventView');
 Route::post('/admin/event/addEvent','adminController@addEvent');
 Route::get('/admin/event','adminController@eventView')->name('eventView');
@@ -117,3 +118,4 @@ Route::get('/admin/revenue','adminController@revenueView')->name('revenueView');
 
 Route::get('/admin/revenueGenarate','adminPdfController@index1')->name('revenueGenaratePDF');
 
+});
