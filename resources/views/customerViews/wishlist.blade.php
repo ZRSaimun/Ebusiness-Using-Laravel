@@ -105,8 +105,8 @@
                                 @endforeach 
 
                             <td>
-                                <a href="/customer/viewproduct/<%= std.product_id %>">View </a>|
-                                <a href="/customer/remove_from_wishlist/<%= std.product_id %>">Remove </a>
+                                <a href="/viewproduct/{{ $std->product_id }}">View </a>|
+                                <a href="/remove_from_wishlist/{{ $std->product_id }}">Remove </a>
                             </td>
                         </tr>
                     @endforeach 

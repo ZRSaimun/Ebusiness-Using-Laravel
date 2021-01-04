@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>image upload</title>
+    <title>View Product Information</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -22,22 +22,41 @@
             <div align="center">
                 <form method="POST" enctype="multipart/form-data">
                     <span align="center">
-                        <h3>Add Product</h3>
+                        <h3>View Product Information</h3>
                     </span>
+                    
                     <table width="50%" align="center" style="border-collapse: separate;border-spacing: 0 8px">
-                        
                         <tr>
-                            <td>Image</td>
+                            <td>Product ID</td>
                             <td>:</td>
-                            <td>
-                                <input type="file" name="filename" accept="/public/pictures/*" />
-                            </td>
+                            <td>{{ $data['product_id'] }}</td>
                         </tr>
                         <tr>
+                            <td>Product Name</td>
+                            <td>:</td>
+                            <td>{{ $data['product_name'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>:</td>
+                            <td>{{ $data['price'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Rating</td>
+                            <td>:</td>
+                            <td>{{ $data['average_rating'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>:</td>
+                            <td>{{ $data['description'] }}</td>
+                        </tr>
+
+                        <tr>
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="submit" name="add" value="Update" />
+                                <a href="{{route('customer.wishlist')}}">Back</a>
                             </td>
                         </tr>
                     </table>

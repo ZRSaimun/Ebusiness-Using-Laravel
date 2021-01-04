@@ -210,9 +210,25 @@ class customerController extends Controller
     }
 
 
+    public function removeFromWishlist($id){
+        $deleted = DB::delete('delete from wishlist where product_id = ?',[$id]);
+        
+        if($deleted){
+                return redirect()->route('customer.wishlist');
+        }else{
+                echo "ERROR";
+        }
+    }
 
+    public function viewProduct($id){
 
+        $info = DB::table('product')
+                ->where('product_id', $id)
+                ->first();
+        $data = (array) $info;
 
+        return view('customerViews.viewproduct')->with('data', $data);
+    }
 
 
 
