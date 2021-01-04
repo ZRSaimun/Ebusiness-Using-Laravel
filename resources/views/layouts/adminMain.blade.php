@@ -98,7 +98,7 @@
                                     <div class="collapse" id="pagesCollapseProducts" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="/admin/list/product">product List</a>
-                                            <a class="nav-link" href="/admin/list/catagory">catagory List</a>
+                                            <a class="nav-link" href="{{route('aCatagoryView')}}">catagory List</a>
                                             <a class="nav-link" href="/admin/list/order">order List</a>
                                         </nav>
                                     </div>

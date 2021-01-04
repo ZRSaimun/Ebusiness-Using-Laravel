@@ -1,4 +1,6 @@
+@extends('layouts.adminMain')
 
+@section('content')
  
                 <main>
                     <div class="container-fluid">
@@ -35,13 +37,13 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <% catagoryInfo.forEach(catagory=>{%>
+                                        @for($i=-0; $i < count($catagory); $i++)
                                                 
                                                 <tr>
-                                                    <td><%=catagory.catagory_id %></td>
-                                                    <td><%=catagory.catagory_name %></td>
+                                                    <td>{{$catagory[$i]['catagory_id']}}</td>
+                                                    <td>{{$catagory[$i]['catagory_name']}}</td>
                                                 </tr>
-                                                <%}) %> 
+                                            @endfor> 
                                             
                                         </tbody>
                                     </table>
@@ -50,4 +52,4 @@
                         </div>
                     </div>
                 </main>
-                
+@endSection

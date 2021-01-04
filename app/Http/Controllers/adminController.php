@@ -10,7 +10,7 @@ use App\Models\userModel;
 use App\Models\eventModel;
 use App\Models\customerpiModel;
 use Carbon\Carbon;
-
+use GuzzleHttp\Client;
 class adminController extends Controller
 {
     public function adminDashboard(Request $req){
@@ -20,6 +20,7 @@ class adminController extends Controller
 
         $jsonString = file_get_contents(base_path('resources/lang/event.json'));
         $data       = json_decode($jsonString, true);
+        
         
         return view('adminViews.admindash')->with('admin',$admin)->with('data', $data);
     }
@@ -273,6 +274,25 @@ class adminController extends Controller
         if ($customer->save()) {
             return redirect()->route('adminDashboard');
         }
+    }
+
+    public function aCatagoryView(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
+                                        ->get();
+        // return view('adminViews.catagoryList')->with('admin',$admin);
+        $client = new Client();
+ 
+        $response = $client->request('GET', 'http://localhost:5000/getAllTheCatagory');
+        if ($response->getStatusCode() == 200) {
+            $catagories= json_decode($response->getBody(), true);
+            $catagory=json_decode($catagories, true);
+           
+        return view('adminViews.catagoryList')->with('admin',$admin)->with('catagory',$catagory);
+        } else {
+            echo "Not get";
+        }
+
     }
 
 
