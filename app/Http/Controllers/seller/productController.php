@@ -10,6 +10,7 @@ use App\Models\productModel;
 use App\Models\userModel;
 use App\Models\couponModel;
 use App\Models\catagoryModel;
+use GuzzleHttp\Client;
 
 
 class productController extends Controller
@@ -296,20 +297,36 @@ class productController extends Controller
     }
     public function addCatagory(Request $request)
     {
-        $coupon = new catagoryModel();
-        $coupon->catagory_name =  $request->catagory_name;
+        //$catagory = new catagoryModel();
+        $catagoryName =  $request->catagory_name;
 
         //echo $product;
+        try {
+            $client = new Client();
+            $res = $client->request('POST', 'http://127.0.0.1:3000/seller/addCatagory', ['form_params' => [
+                'userName' => $request->session()->get('user'),
+                'catagoryName' => $catagoryName
+            ]]);
+            $res = json_decode($res->getBody(), true);
+            //echo $key_value =   $res['affectedRows'];
+            $request->session()->flash('status', 'successful!');
+            return view('seller.addCatagory');
+        } catch (\GuzzleHttp\Exception\ConnectException $e) {
+            $request->session()->flash('status', 'Unable to connect!');
+            return view('seller.addCatagory');
+        }
 
-        if (DB::table('catagory')->insert([
-            'catagory_name' =>  $coupon->catagory_name,
+
+
+        /*if (DB::table('catagory')->insert([
+            'catagory_name' =>  $catagory->catagory_name,
         ])) {
             $request->session()->flash('status', 'successful!');
             return view('seller.addCatagory');
         } else {
             $request->session()->flash('status', 'UNsuccessful!');
             return view('seller.addCatagory');
-        }
+        }*/
     }
 
 
