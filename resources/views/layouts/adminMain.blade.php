@@ -82,7 +82,7 @@
                                         </nav>
                                     </div>
 
-                                    <a class="nav-link" href="/admin/retailManager">Retail Manager</a>
+                                    <a class="nav-link" href="{{route('adminRetailView')}}">Retail Manager</a>
 
                                 </nav>
                             </div>

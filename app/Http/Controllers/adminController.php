@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\adminpiModel;
 use App\Models\sellerpiModel;
+use App\Models\retailsellerpiModel;
 use App\Models\userModel;
 use Carbon\Carbon;
 
@@ -174,6 +175,25 @@ class adminController extends Controller
                 }else{
                     return back();
                 }
+    }
+
+    public function adminRetailView(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
+                                        ->get();
+        $retail = retailsellerpiModel::all();
+        return view('adminViews.retailManagerList')->with('admin',$admin)->with('retail',$retail);
+    }
+
+    public function deleteRetail(Request $req){
+        $id = $req->get('userId');
+        retailsellerpiModel::where('user_id',$id)->delete($id);
+        userModel::where('user_id',$id)->delete($id);
+        
+        return response()->json([
+            'success' => 'retailer deleted'
+        ]);              
+
     }
 
     

@@ -94,6 +94,8 @@ Route::get('/admin/seller/delete','adminController@deleteSeller');
 Route::get('/admin/seller/add','adminController@adminAddSellerView')->name('adminAddSellerView');
 Route::post('/admin/seller/add','adminController@adminAddSeller');
 
+Route::get('/admin/retailManager','adminController@adminRetailView')->name('adminRetailView');
+Route::get('/admin/retailManager/delete','adminController@deleteRetail');
 
 Route::get('/adminLogin/github','loginController@githubloginSocialAdmin')->name('adminSocialLogin');
 Route::get('/adminLogin/github/redirect','loginController@githubloginSocialRedirectAdmin')->name('adminSocialLoginRedirect');
