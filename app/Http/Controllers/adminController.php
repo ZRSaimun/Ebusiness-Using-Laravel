@@ -317,6 +317,33 @@ class adminController extends Controller
         }
     }
 
+    public function adminVerifySellerView(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
+                                        ->get();
+        $seller = sellerpiModel::all();
+        return view('adminViews.verifySeller')->with('admin',$admin)->with('seller',$seller);
+    }
+
+    public function adminSellerVerify(Request $req){
+        $id = $req->get('userId');
+        $seller = sellerpiModel::where('user_id',$id)
+                        ->first();
+          $seller->verified=1;    
+
+        if ($seller->save()) {
+            return response()->json([
+                'success' => 'seller verified'
+            ]);  
+        }else{
+            return response()->json([
+                'failed' => 'seller verification failed'
+            ]);
+        }
+        
+        
+    }
+
 
 
 }

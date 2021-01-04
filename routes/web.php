@@ -77,8 +77,9 @@ Route::post('/adminLogin','loginController@verifyAdmin');
 Route::get('/adminLogin/github','loginController@githubloginSocialAdmin')->name('adminSocialLogin');
 Route::get('/adminLogin/github/redirect','loginController@githubloginSocialRedirectAdmin')->name('adminSocialLoginRedirect');
 
-Route::group(['middleware' => ['adminVerifyy']], function () {
 Route::get('/admin','adminController@adminDashboard')->name('adminDashboard')->middleware('adminRoute');
+
+Route::group(['middleware' => ['adminVerifyy']], function () {
 
 Route::get('/admin/adminRegi','adminRegistrationController@adminRegistrationview')->name('adminRegistration');
 Route::post('/admin/adminRegi','adminRegistrationController@adminRegistration');
@@ -98,6 +99,9 @@ Route::get('/admin/seller/blocking','adminController@blockingSeller');
 Route::get('/admin/seller/delete','adminController@deleteSeller');
 Route::get('/admin/seller/add','adminController@adminAddSellerView')->name('adminAddSellerView');
 Route::post('/admin/seller/add','adminController@adminAddSeller');
+Route::get('/admin/verifySeller','adminController@adminVerifySellerView')->name('adminVerifySellerView');
+Route::get('/admin/SellerVerify','adminController@adminSellerVerify')->name('adminSellerVerify');
+
 
 Route::get('/admin/retailManager','adminController@adminRetailView')->name('adminRetailView');
 Route::get('/admin/retailManager/delete','adminController@deleteRetail');

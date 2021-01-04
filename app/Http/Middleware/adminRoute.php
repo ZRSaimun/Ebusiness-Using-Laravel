@@ -17,6 +17,7 @@ class adminRoute
     public function handle(Request $request, Closure $next)
     {
         if($request->session()->has('logged')){
+            $request->session()->put('typee', 'admin');
             return $next($request);
          }else{
              
