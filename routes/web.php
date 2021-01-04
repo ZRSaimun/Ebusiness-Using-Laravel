@@ -103,6 +103,6 @@ Route::get('/adminLogin/github/redirect','loginController@githubloginSocialRedir
 
 Route::get('/admin/event/addEvent','adminController@addEventView')->name('addEventView');
 Route::post('/admin/event/addEvent','adminController@addEvent');
-
 Route::get('/admin/event','adminController@eventView')->name('eventView');
 
+Route::get('/admin/customer','adminController@customerView')->name('customerView');

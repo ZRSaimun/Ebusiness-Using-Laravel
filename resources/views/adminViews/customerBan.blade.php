@@ -1,4 +1,6 @@
+@extends('layouts.adminMain')
 
+@section('content')
     <body class="bg-primary">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
@@ -38,3 +40,4 @@
         </div>
     </body>
 
+@endSection

@@ -8,6 +8,7 @@ use App\Models\sellerpiModel;
 use App\Models\retailsellerpiModel;
 use App\Models\userModel;
 use App\Models\eventModel;
+use App\Models\customerpiModel;
 use Carbon\Carbon;
 
 class adminController extends Controller
@@ -236,5 +237,13 @@ class adminController extends Controller
         return view('adminViews.pastEvent')->with('admin',$admin)->with('event', $event);
     }
     
+    public function customerView(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                ->where('password',$req->session()->get('addminpass'))
+                                ->get();
+        $customer = customerpiModel::all();
+
+        return view('adminViews.customer')->with('admin',$admin)->with('customer', $customer);
+    }
 
 }
