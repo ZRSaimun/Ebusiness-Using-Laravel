@@ -113,4 +113,5 @@ Route::get('/admin/customer/unban/{id}','adminController@customerUnban')->name('
 Route::get('/admin/getCustomerPDF','adminPdfController@index')->name('customerPDF');
 
 Route::get('/admin/list/catagory','adminController@aCatagoryView')->name('aCatagoryView');
+Route::get('/admin/revenue','adminController@revenueView')->name('revenueView');
 

@@ -1,3 +1,6 @@
+@extends('layouts.adminMain')
+
+@section('content')
 <style>
     .center {
 
@@ -14,12 +17,12 @@ padding: 10px;
 
 
 <body>
-    <input type="hidden" id="pm" value="<%= revDate.priviousMonth %> "> 
-        <input type="hidden" id="pm1" value="<%= revDate.priviousMonth1 %> "> 
-        <input type="hidden" id="pm2" value="<%= revDate.priviousMonth2 %> "> 
-        <input type="hidden" id="rev" value="<%= rev.month1 %> "> 
-        <input type="hidden" id="rev1" value="<%= rev.month2 %> "> 
-        <input type="hidden" id="rev2" value="<%= rev.month3 %> "> 
+    <input type="hidden" id="pm" value="{{$revv[1]['priviousMonth']}}"> 
+        <input type="hidden" id="pm1" value="{{$revv[1]['priviousMonth1']}}"> 
+        <input type="hidden" id="pm2" value="{{$revv[1]['priviousMonth2']}}"> 
+        <input type="hidden" id="rev" value="{{$revv[0]['month1']}}"> 
+        <input type="hidden" id="rev1" value="{{$revv[0]['month2']}}"> 
+        <input type="hidden" id="rev2" value="{{$revv[0]['month3']}}"> 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -94,17 +97,17 @@ padding: 10px;
         </tfoot>
         <tbody>
             <tr>
-                <td><%=revDate.priviousMonth%></td>
-                <td><%=rev.month1%></td>
+                <td>{{$revv[1]['priviousMonth']}}</td>
+                <td>{{$revv[0]['month1']}}</td>
                 
             </tr>
             <tr>
-                <td><%=revDate.priviousMonth1%></td>
-                <td><%=rev.month2%></td>
+                <td>{{$revv[1]['priviousMonth1']}}</td>
+                <td>{{$revv[0]['month2']}}</td>
             </tr>
             <tr>
-                <td><%=revDate.priviousMonth2%></td>
-                <td><%=rev.month3%></td>
+                <td>{{$revv[1]['priviousMonth2']}}</td>
+                <td>{{$revv[0]['month3']}}</td>
             </tr>
         </tbody>
     
@@ -167,3 +170,4 @@ padding: 10px;
     
     
   </body>
+  @endSection

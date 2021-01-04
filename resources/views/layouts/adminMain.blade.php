@@ -142,7 +142,7 @@
 
                             <!-- addon start -->
                             <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="/admin/revenue">
+                            <a class="nav-link" href="{{route('revenueView')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Genarate Reports
                             </a>

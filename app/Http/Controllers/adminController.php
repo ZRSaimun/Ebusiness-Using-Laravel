@@ -286,13 +286,31 @@ class adminController extends Controller
         $response = $client->request('GET', 'http://localhost:5000/getAllTheCatagory');
         if ($response->getStatusCode() == 200) {
             $catagories= json_decode($response->getBody(), true);
-            $catagory=json_decode($catagories, true);
+            $catagory= json_decode($catagories, true);
            
         return view('adminViews.catagoryList')->with('admin',$admin)->with('catagory',$catagory);
         } else {
             echo "Not get";
         }
 
+    }
+
+    public function revenueView(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
+                                        ->get();
+        // return view('adminViews.catagoryList')->with('admin',$admin);
+        $client = new Client();
+ 
+        $response = $client->request('GET', 'http://localhost:5000/allRevenueChart');
+        if ($response->getStatusCode() == 200) {
+            $reve= json_decode($response->getBody(), true);
+            $revv=json_decode($reve, true);
+            //dd($revv[1]['priviousMonth']);
+        return view('adminViews.revenueChart')->with('admin',$admin)->with('revv',$revv);
+        } else {
+            echo "Not get";
+        }
     }
 
 
