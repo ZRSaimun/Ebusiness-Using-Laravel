@@ -66,6 +66,7 @@
                                            @endfor  
                                         </tbody>
                                     </table>
+                                    <a href='/admin/getCustomerPDF' type="button" id="button" class="btn btn-success">Genarate</a>
                                      
                                 </div>
                             </div>

@@ -110,3 +110,7 @@ Route::get('/admin/customer/{id}','adminController@customerBanView')->name('cust
 Route::post('/admin/customer/{id}','adminController@customerBan');
 Route::get('/admin/customer/unban/{id}','adminController@customerUnban')->name('customerUnban');
 
+Route::get('/admin/getCustomerPDF','adminPdfController@index')->name('customerPDF');
+
+
+
