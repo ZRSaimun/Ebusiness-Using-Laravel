@@ -14,7 +14,7 @@
                                     <div class="card-body">RUNNING EVENT</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         
-                                        <div class="small text-white"><h1><%= runningEvent.name %> </h1></div>
+                                        <div class="small text-white"><h1>{{$data['name']}}</h1></div>
                                     </div>
                                 </div>
                             </div>

@@ -99,3 +99,10 @@ Route::get('/admin/retailManager/delete','adminController@deleteRetail');
 
 Route::get('/adminLogin/github','loginController@githubloginSocialAdmin')->name('adminSocialLogin');
 Route::get('/adminLogin/github/redirect','loginController@githubloginSocialRedirectAdmin')->name('adminSocialLoginRedirect');
+
+
+Route::get('/admin/event/addEvent','adminController@addEventView')->name('addEventView');
+Route::post('/admin/event/addEvent','adminController@addEvent');
+
+Route::get('/admin/event','adminController@eventView')->name('eventView');
+

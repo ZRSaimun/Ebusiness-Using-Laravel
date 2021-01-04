@@ -7,6 +7,7 @@ use App\Models\adminpiModel;
 use App\Models\sellerpiModel;
 use App\Models\retailsellerpiModel;
 use App\Models\userModel;
+use App\Models\eventModel;
 use Carbon\Carbon;
 
 class adminController extends Controller
@@ -15,7 +16,11 @@ class adminController extends Controller
         $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
                                         ->where('password',$req->session()->get('addminpass'))
                                         ->get();
-        return view('adminViews.admindash')->with('admin',$admin);
+
+        $jsonString = file_get_contents(base_path('resources/lang/event.json'));
+        $data       = json_decode($jsonString, true);
+        
+        return view('adminViews.admindash')->with('admin',$admin)->with('data', $data);
     }
 
     public function adminProfile(Request $req){
@@ -196,6 +201,40 @@ class adminController extends Controller
 
     }
 
+    public function addEventView(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
+                                        ->get();
+        
+        return view('adminViews.addEvent')->with('admin',$admin);
+    }
+
+    public function addEvent(Request $req){
+        $event = new eventModel();
+
+                $event->event_name          = $req->name;
+                $event->event_description   = $req->description;
+
+                $eventData=['name'=>$req->name, 'des'=>$req->description];
+                $newJsonString = json_encode($eventData, JSON_PRETTY_PRINT);
+
+                file_put_contents(base_path('resources/lang/event.json'), stripslashes($newJsonString));
+            
+                if($event->save()){
+                    return redirect()->route('adminDashboard');
+                }else{
+                    return back();
+                }
+    }
+
+    public function eventView(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                ->where('password',$req->session()->get('addminpass'))
+                                ->get();
+        $event = eventModel::all();
+
+        return view('adminViews.pastEvent')->with('admin',$admin)->with('event', $event);
+    }
     
 
 }
