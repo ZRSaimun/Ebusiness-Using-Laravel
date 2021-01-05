@@ -12,6 +12,7 @@ use App\Models\customerpiModel;
 use App\Models\reportModel;
 use App\Models\productModel;
 use App\Models\catagoryModel;
+use App\Models\orderlistModel;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 class adminController extends Controller
@@ -385,6 +386,22 @@ class adminController extends Controller
                                             ->with('retailer',$retailer)
                                             ->with('seller', $seller)
                                             ->with('catagory',$catagory);
+    }
+
+    public function adminorderList(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                            ->where('password',$req->session()->get('addminpass'))
+                            ->get();
+        
+        $order = orderlistModel::all();
+        $product = productModel::all();
+        $customer = customerpiModel::all();
+
+        return view('adminViews.orderList')->with('admin',$admin)
+                                            ->with('product',$product)
+                                            ->with('order',$order)
+                                            ->with('customer', $customer);
+                                           
     }
     
 

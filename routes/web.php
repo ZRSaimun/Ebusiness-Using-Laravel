@@ -126,6 +126,6 @@ Route::get('/admin/reportinggView','adminController@reportinggView')->name('repo
 Route::get('/admin/report/delete','adminController@reportDelete');
 
 Route::get('/admin/list/product','adminController@adminProductList')->name('adminProductList');
-
+Route::get('/admin/list/order','adminController@adminorderList')->name('adminorderList');
 
 });
