@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Retail retailseller | Dashboardd</title>
+  <title>Retail Seller | Dashboardd</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -37,7 +37,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="http://localhost:8000/retailseller" class="nav-link">Home</a>
+        <a href="http://localhost:8000/seller" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -160,7 +160,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="http://localhost:8000/retailseller" class="brand-link">
+    <a href="http://localhost:8000/seller" class="brand-link">
       <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">{{ $user_id }}</span>
     </a>
@@ -199,19 +199,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/retailseller/addProduct" class="nav-link active">
+                <a href="/seller/addProduct" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Edit profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/retailseller/deleteProduct" class="nav-link">
+                <a href="/seller/deleteProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Delete Profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/retailseller/editProduct" class="nav-link">
+                <a href="/seller/editProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Change Password</p>
                 </a>
@@ -238,31 +238,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/retailseller/addProduct" class="nav-link">
+                <a href="/seller/addProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/retailseller/deleteProduct" class="nav-link">
+                <a href="/seller/deleteProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Delete Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/retailseller/editProduct" class="nav-link">
+                <a href="/seller/editProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Edit Deatils</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/retailseller/addCoupon" class="nav-link">
+                <a href="/seller/addCoupon" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Coupon</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/retailseller/addCatagory" class="nav-link">
+                <a href="/seller/addCatagory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Catagory</p>
                 </a>
@@ -297,19 +297,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/retailseller/reviewProduct" class="nav-link">
+                <a href="/seller/reviewProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Review</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/retailseller/totalIncome" class="nav-link">
+                <a href="/seller/totalIncome" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sells Analysis</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/retailseller/reportCustomer" class="nav-link">
+                <a href="/seller/reportCustomer" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Report Customer</p>
                 </a>
@@ -332,13 +332,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/retailseller/publishedProduct" class="nav-link">
+                <a href="/seller/publishedProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Published Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/retailseller/unpublishedProduct" class="nav-link">
+                <a href="/seller/unpublishedProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Unpublished Product</p>
                 </a>
@@ -381,6 +381,17 @@
               </li>
             </ul>
           </li>
+
+          <li class="nav-item">
+          <a href="pages/examples/invoice.html" class="nav-link">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+              Invoice
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+           </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
@@ -391,13 +402,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/retailseller/pendingOrders" class="nav-link">
+                <a href="/seller/pendingOrders" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pending Orders</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/retailseller/deliverdOrders" class="nav-link">
+                <a href="/seller/deliverdOrders" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Deliverd Orders</p>
                 </a>
@@ -406,6 +417,8 @@
               
             </ul>
           </li>
+          
+
           
          
           
@@ -522,10 +535,76 @@
 
           <!-- /.Left col -->
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
-          
-          <!-- right col -->
+              <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+
+
+
+<!-- DONUT CHART -->
+<div class="card card-danger">
+              <div class="card-header">
+                <h3 class="card-title">Donut Chart</h3>
+
+                <div class="card-tools">
+                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-tool" data-card-widget="remove">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body">
+                <canvas id="donutChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+
+          <div class="col-md-6">
+            <!-- AREA CHART -->
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="areaChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
+            
+
+            <!-- PIE CHART -->
+            
+            <!-- /.card -->
+
+          </div>
+          <!-- /.col (LEFT) -->
+          <div class="col-md-6">
+            <!-- LINE CHART -->
+            
+              
+              <div class="card-body">
+                <div class="chart">
+                  <canvas id="lineChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                </div>
+              </div>
+              <!-- /.card-body -->
+            
+            <!-- /.card -->
+
+           
+            <!-- /.card -->
+
+            
+
+          </div>
+          <!-- /.col (RIGHT) -->
         </div>
-        <!-- /.row (main row) -->
+        <!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
 
@@ -582,5 +661,65 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+
+<script>
+  $(function () {
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+    //--------------
+    
+
+    // This will get the first returned node in the jQuery collection.
+    
+
+    //-------------
+    //- LINE CHART -
+    //--------------
+    
+
+    //-------------
+    //- DONUT CHART -
+    //-------------
+    // Get context with jQuery - using jQuery's .get() method.
+    var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+    var donutData        = {
+      labels: [
+          'rating',
+          'Product',
+          'Catagory',
+          'User',
+          'order',
+          'published',
+      ],
+      datasets: [
+        {
+          data: [700,500,400,600,300,100],
+          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+        }
+      ]
+    }
+    var donutOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    var donutChart = new Chart(donutChartCanvas, {
+      type: 'doughnut',
+      data: donutData,
+      options: donutOptions
+    })
+
+    //-------------
+    
+
+    //-------------
+ 
+  })
+</script>
+
 </body>
 </html>
