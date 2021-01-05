@@ -15,18 +15,23 @@ use App\Models\catagoryModel;
 use App\Models\orderlistModel;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\eventRequest;
+
+use Validator;
 class adminController extends Controller
 {
     public function adminDashboard(Request $req){
         $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
                                         ->where('password',$req->session()->get('addminpass'))
                                         ->get();
+        $user = userModel::all();
 
         $jsonString = file_get_contents(base_path('resources/lang/event.json'));
         $data       = json_decode($jsonString, true);
         
         
-        return view('adminViews.admindash')->with('admin',$admin)->with('data', $data);
+        return view('adminViews.admindash')->with('admin',$admin)->with('data', $data)->with('user',$user);
     }
 
     public function adminProfile(Request $req){
@@ -149,7 +154,12 @@ class adminController extends Controller
         return view('adminViews.addSeller')->with('admin',$admin);
     }
 
-    public function adminAddSeller(Request $req){
+    public function adminAddSeller(UserRequest $req){
+        // $req->validate([
+        //     'name' => 'required|min:3',
+        //     'email'=> 'required',
+        //     'type' => 'required'
+        // ])->validate();
         $user = new userModel();
 
                 $user->email     = $req->email;
@@ -215,7 +225,7 @@ class adminController extends Controller
         return view('adminViews.addEvent')->with('admin',$admin);
     }
 
-    public function addEvent(Request $req){
+    public function addEvent(eventRequest $req){
         $event = new eventModel();
 
                 $event->event_name          = $req->name;

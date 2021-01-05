@@ -18,12 +18,17 @@
                                         @csrf
                                             <div class="form-group">
                                                 <label class="small mb-1">Name</label>
-                                                <input class="form-control py-4"  type="text" name="name" placeholder="Event Name" />
+                                                <input class="form-control py-4"  type="text" name="name" placeholder="Event Name" value="{{old('name')}}" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" >Description</label>
-                                                <input class="form-control py-4" type="text" name="description" placeholder="Description" />
+                                                <input class="form-control py-4" type="text" name="description" placeholder="Description" value="{{old('description')}}" />
                                             </div>
+                                                    <div class="alert alert-warning">
+                                                        @foreach($errors->all() as $err)
+                                                            {{$err}} <br>
+                                                        @endforeach
+                                                        </div>
                                           
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <button type="submit" class="btn btn-primary">Confirm</button>

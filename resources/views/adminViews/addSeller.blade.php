@@ -17,17 +17,22 @@
                                             @csrf
                                             <div class="form-group">
                                                 <label class="small mb-1">Name</label>
-                                                <input class="form-control py-4"  type="test" name="name" placeholder="Name" />
+                                                <input class="form-control py-4"  type="test" name="name" placeholder="Name" value="{{old('name')}}" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" >Email</label>
-                                                <input class="form-control py-4" type="email" name="email" placeholder="Email" />
+                                                <input class="form-control py-4" type="email" name="email" placeholder="Email" value="{{old('email')}}" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" >Password</label>
                                                 <input class="form-control py-4" type="password" name="password" placeholder="password" />
                                             </div>
                                             
+                                                        <div class="alert alert-warning">
+                                                        @foreach($errors->all() as $err)
+                                                            {{$err}} <br>
+                                                        @endforeach
+                                                        </div>
                                     
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <button type="submit" class="btn btn-primary">Confirm</button>
