@@ -76,7 +76,7 @@
 
     <div class="container-fluid">
       <h5 style="text-align:center">Products that you have wishlisted.</h5>
-      <p><br><br>
+      <p>
         <table class="table table-sm">
             <thead>
               <tr>
@@ -112,10 +112,27 @@
                     @endforeach 
             </tbody>
           </table>
-      </p>
-    </div>
+      </p><br>
 
-    
+      <h4 style="text-align:left">Search Products</h4>
+      <input class="form-control" type="text" name="search" id="search" placeholder="Search" aria-label="Search">
+      <br>
+
+      <table class="table table-sm"> 
+            <thead>
+              <tr>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Price</th>
+                <th scope="col">Check</th>
+                
+              </tr>
+            </thead>
+        <tbody id="temporary-table">
+
+        </tbody>
+      </table>
+
+    </div>
   </div>
 </div>
 <!-- partial -->
@@ -128,5 +145,45 @@
     </ul>
 </footer>
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+  $(document).on('keyup', '#search', function(){
+            var query = $(this).val();
+            console.log(query);
+            $.ajax({
+              method:'GET',
+              url:"/search_product_ajax",
+              dataType:'json',
+              data:{
+                query:query,
+              },
+              success: function(res){
+                //console.log(res);
+                var tableRow ='';
+                $('#temporary-table').html('');
+                $.each(res,function(index,value){
+                  //console.log(index);
+                  //console.log("Break");
+                
+                  const parsed = JSON.parse(JSON.stringify(value));
+                  console.log(parsed[0].price);
+
+                  //console.log(JSON.stringify(value));
+              
+              tableRow ='<tr><td>'+parsed[0].product_name+'</td><td>'+parsed[0].price+'</td><td><a href="/viewproduct/'+parsed[0].product_id+'">view</a></td></tr>'; 
+
+            
+              $('#temporary-table').append(tableRow);
+             
+          });
+        }
+     });       
+  });
+
+      
+</script>
+
 </body>
 </html>

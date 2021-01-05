@@ -38,6 +38,8 @@ Route::get('/confirm_cart/{id}','customerController@confirmCart');
 Route::get('/viewproduct/{id}','customerController@viewProduct')->name('customer.viewProduct');
 Route::get('/remove_from_wishlist/{id}','customerController@removeFromWishlist');
 
+Route::get('/search_product_ajax', 'customerController@searchProduct')->name('customer.searchProduct');
+
 
 
 

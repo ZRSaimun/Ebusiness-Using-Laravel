@@ -231,6 +231,39 @@ class customerController extends Controller
     }
 
 
+    public function searchProduct(Request $req){
+
+        $query = $req->get('query');
+
+
+
+        $prodlist = DB::table('product')
+                           ->where('product_name','like','%'.$query.'%')
+                           ->get();
+
+        $prodArray = (array) $prodlist;
+/*         return response()->json([
+                        'test'=> $prodlist
+                        ]); */
+
+//        return json_encode($prodArray);
+        return $prodArray;
+
+        return view('customer.wishlist');
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
