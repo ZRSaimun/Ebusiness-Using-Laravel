@@ -125,5 +125,7 @@ Route::get('/admin/revenueGenarate','adminPdfController@index1')->name('revenueG
 Route::get('/admin/reportinggView','adminController@reportinggView')->name('reportingg');
 Route::get('/admin/report/delete','adminController@reportDelete');
 
+Route::get('/admin/list/product','adminController@adminProductList')->name('adminProductList');
+
 
 });

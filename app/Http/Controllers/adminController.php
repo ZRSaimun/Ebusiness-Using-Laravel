@@ -10,6 +10,8 @@ use App\Models\userModel;
 use App\Models\eventModel;
 use App\Models\customerpiModel;
 use App\Models\reportModel;
+use App\Models\productModel;
+use App\Models\catagoryModel;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 class adminController extends Controller
@@ -367,6 +369,22 @@ class adminController extends Controller
         return response()->json([
             'success' => 'we will perform some action'
         ]); 
+    }
+
+    public function adminProductList(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                            ->where('password',$req->session()->get('addminpass'))
+                            ->get();
+        $retailer = retailsellerpiModel::all();
+        $seller = sellerpiModel::all();
+        $product = productModel::all();
+        $catagory = catagoryModel::all();
+
+        return view('adminViews.productList')->with('admin',$admin)
+                                            ->with('product',$product)
+                                            ->with('retailer',$retailer)
+                                            ->with('seller', $seller)
+                                            ->with('catagory',$catagory);
     }
     
 

@@ -1,4 +1,6 @@
-<% flag = '' %> 
+@extends('layouts.adminMain')
+
+@section('content')
                 <main>
                     <div class="container-fluid">
                         <h1 class="mt-4">Product List</h1>
@@ -52,40 +54,39 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <%productInfo.forEach(product=>{%>
+                                        @for($i=0; $i < count($product); $i++)
                                                 
                                               
                                                 <tr>
-                                                    <td><%=  product.product_name %> </td>
+                                                    <td>{{$product[$i]['product_name']}}</td>
 
-                                                    <% catagoryInfo.forEach(c=>{ %>
-                                                        <% console.log("catagory",c.catagory_id) %> 
-                                                        <% console.log("product",product.catagory_id) %> 
-                                                        <% if(c.catagory_id == product.catagory_id){%>
-                                                            <td><%=  c.catagory_name  %> </td>
+                                                    @for($j=0; $j < count($catagory); $j++)
+                                                        
+                                                        @if($catagory[$j]['catagory_id'] == $product[$i]['catagory_id'])
+                                                            <td>{{$catagory[$j]['catagory_name']}}</td>
                                                             
-                                                            <%}%>
-                                                   <% }) %> 
+                                                            @endif
+                                                   @endfor 
 
-                                                    <td><%=  product.quantity %></td>
-                                                    <td><%=  product.description %></td>
-                                                    <td><%=  product.price %></td>
+                                                    <td>{{$product[$i]['quantity']}}</td>
+                                                    <td>{{$product[$i]['description']}}</td>
+                                                    <td>{{$product[$i]['price']}}</td>
                                                    
-                                                    <% sellerInfo.forEach(s=>{%>
-                                                        <% if(s.user_id == product.user_id){%>
-                                                            <td><%=  s.name %></td>
-                                                            <%}%>
-                                                        <%}) %> 
-                                                    <% retailsellerInfo.forEach(r=>{%>
-                                                        <% if(r.user_id==product.user_id){%>
-                                                            <td><%=  r.name %></td>
-                                                            <%} %> 
-                                                        <%}) %>
+                                                    @for($k=0; $k < count($seller); $k++)
+                                                        @if($seller[$k]['user_id'] == $product[$i]['user_id'])
+                                                            <td>{{$seller[$j]['name']}}</td>
+                                                        @endif
+                                                     @endfor 
+                                                     @for($p=0; $p< count($retailer); $p++)
+                                                        @if($retailer[$p]['user_id'] == $product[$i]['user_id'])
+                                                            <td>{{$retailer[$p]['name']}}</td>
+                                                        @endif
+                                                     @endfor
                                                     
                                                         
                                                 </tr>
 
-                                           <% }) %> 
+                                        @endfor 
                                            
                                         </tbody>
                                     </table>
@@ -94,4 +95,4 @@
                         </div>
                     </div>
                 </main>
-                
+ @endSection('content')

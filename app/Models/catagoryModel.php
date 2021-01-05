@@ -10,5 +10,5 @@ class catagoryModel extends Model
     use HasFactory;
     protected $table = "catagory";
     protected $primaryKey = "catagory_id ";
-    public $timestamp = false;
+    public $timestamps = false;
 }
