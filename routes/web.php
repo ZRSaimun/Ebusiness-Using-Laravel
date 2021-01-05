@@ -21,25 +21,26 @@ Route::get('/', function () {
 Route::get('/login',function () { return view('login.index'); })->name('generalLoginPage');
 Route::post('/login','loginController@verifyLogin')->name('verifyLogin');
 
-Route::get('/dashboard','customerController@dashboard')->name('customer.index');
-Route::get('/pending_orders','customerController@pendingOrders')->name('customer.pending_orders');
-Route::get('/order_history','customerController@orderHistory')->name('customer.order_history');
-Route::get('/cart','customerController@cart')->name('customer.cart');
-Route::get('/wishlist','customerController@wishlist')->name('customer.wishlist');
+Route::group(['middleware'=>['sess']], function(){
+    Route::get('/dashboard','customerController@dashboard')->name('customer.index');
+    Route::get('/pending_orders','customerController@pendingOrders')->name('customer.pending_orders');
+    Route::get('/order_history','customerController@orderHistory')->name('customer.order_history');
+    Route::get('/cart','customerController@cart')->name('customer.cart');
+    Route::get('/wishlist','customerController@wishlist')->name('customer.wishlist');
 
-Route::get('/settings','customerController@settings')->name('customer.settings');
-Route::post('/settings','customerController@updateAccountInfo')->name('customer.updateAccountInfo');
-Route::get('/report','customerController@reportProblem')->name('customer.report');
+    Route::get('/settings','customerController@settings')->name('customer.settings');
+    Route::post('/settings','customerController@updateAccountInfo')->name('customer.updateAccountInfo');
+    Route::get('/report','customerController@reportProblem')->name('customer.report');
 
-Route::get('/cancelorder/{id}','customerController@cancelOrder');
-Route::get('/remove_from_cart/{id}','customerController@removeFromCart');
-Route::get('/confirm_cart/{id}','customerController@confirmCart');
+    Route::get('/cancelorder/{id}','customerController@cancelOrder');
+    Route::get('/remove_from_cart/{id}','customerController@removeFromCart');
+    Route::get('/confirm_cart/{id}','customerController@confirmCart');
 
-Route::get('/viewproduct/{id}','customerController@viewProduct')->name('customer.viewProduct');
-Route::get('/remove_from_wishlist/{id}','customerController@removeFromWishlist');
+    Route::get('/viewproduct/{id}','customerController@viewProduct')->name('customer.viewProduct');
+    Route::get('/remove_from_wishlist/{id}','customerController@removeFromWishlist');
 
-Route::get('/search_product_ajax', 'customerController@searchProduct')->name('customer.searchProduct');
-
+    Route::get('/search_product_ajax', 'customerController@searchProduct')->name('customer.searchProduct');
+});
 
 
 
