@@ -9,6 +9,7 @@ use App\Models\retailsellerpiModel;
 use App\Models\userModel;
 use App\Models\eventModel;
 use App\Models\customerpiModel;
+use App\Models\reportModel;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 class adminController extends Controller
@@ -344,6 +345,30 @@ class adminController extends Controller
         
     }
 
+    public function reportinggView(Request $req){
+        $admin = adminpiModel::where('email',$req->session()->get('adminuser'))
+                                        ->where('password',$req->session()->get('addminpass'))
+                                        ->get();
+        $customer = customerpiModel::all();
+        $retailer = retailsellerpiModel::all();
+        $seller = sellerpiModel::all();
+        $report = reportModel::all();
+        return view('adminViews.report')->with('admin',$admin)
+                                        ->with('customer',$customer)
+                                        ->with('retailer',$retailer)
+                                        ->with('seller', $seller)
+                                        ->with('report',$report);
+
+    }
+    public function reportDelete(Request $req){
+        $id = $req->get('userId');
+        reportModel::where('report_id',$id)->delete($id);
+        
+        return response()->json([
+            'success' => 'we will perform some action'
+        ]); 
+    }
+    
 
 
 }
