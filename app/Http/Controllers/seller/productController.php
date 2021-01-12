@@ -283,16 +283,12 @@ class productController extends Controller
         $coupon->coupon_code =  $request->coupon_code;
         $coupon->percentage =  $request->percentage;
         //echo $product;
-        /*DB::table('coupon_seller')->insert([
+        DB::table('coupon_seller')->insert([
             'couponSeller' =>  $coupon->coupon_code,
             'percentage' => $coupon->percentage
-        ]);*/
-        //echo "sdfsdf";
-        echo $coupon->coupon_code;
-        echo $coupon->percentage;
-        //echo $product;
+        ]);
 
-        if (DB::table('coupon')->insert([
+        if (DB::table('coupon_seller')->insert([
             'coupon_code' =>  $coupon->coupon_code,
             'percentage' => $coupon->percentage
         ])) {
