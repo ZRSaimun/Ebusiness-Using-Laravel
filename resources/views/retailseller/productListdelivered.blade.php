@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Retail retailseller | Dashboard</title>
+  <title>Retail seller | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -155,7 +155,7 @@
     <!-- Brand Logo -->
     <a href="http://localhost:8000/retailseller" class="brand-link">
       <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light"> Retail retailseller</span>
+      <span class="brand-text font-weight-light"> Retail seller</span>
     </a>
 
     <!-- Sidebar -->
@@ -475,7 +475,7 @@
                     <td>{{$items->customer_id }} </td>
                     <td>{{$items->paid }}</td>
                     <td>  {{$items->date }}</td>
-                    <td>{{$items->seller_revenue }}</td>
+                    <td>{{$items->retailseller_revenue }}</td>
                   </tr>
                   @endforeach
                  

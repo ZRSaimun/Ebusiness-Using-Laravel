@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Retail Seller | Dashboardd</title>
+  <title>Retail seller | Dashboardd</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -37,7 +37,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="http://localhost:8000/seller" class="nav-link">Home</a>
+        <a href="http://localhost:8000/retailseller" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -160,7 +160,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="http://localhost:8000/seller" class="brand-link">
+    <a href="http://localhost:8000/retailseller" class="brand-link">
       <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">{{ $user_id }}</span>
     </a>
@@ -199,19 +199,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/seller/addProduct" class="nav-link active">
+                <a href="/retailseller/addProduct" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Edit profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/seller/deleteProduct" class="nav-link">
+                <a href="/retailseller/deleteProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Delete Profile</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/seller/editProduct" class="nav-link">
+                <a href="/retailseller/editProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Change Password</p>
                 </a>
@@ -238,31 +238,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/seller/addProduct" class="nav-link">
+                <a href="/retailseller/addProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/seller/deleteProduct" class="nav-link">
+                <a href="/retailseller/deleteProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Delete Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/seller/editProduct" class="nav-link">
+                <a href="/retailseller/editProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Edit Deatils</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/seller/addCoupon" class="nav-link">
+                <a href="/retailseller/addCoupon" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Coupon</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/seller/addCatagory" class="nav-link">
+                <a href="/retailseller/addCatagory" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Catagory</p>
                 </a>
@@ -297,19 +297,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/seller/reviewProduct" class="nav-link">
+                <a href="/retailseller/reviewProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Review</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/seller/totalIncome" class="nav-link">
+                <a href="/retailseller/totalIncome" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sells Analysis</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/seller/reportCustomer" class="nav-link">
+                <a href="/retailseller/reportCustomer" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Report Customer</p>
                 </a>
@@ -332,13 +332,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/seller/publishedProduct" class="nav-link">
+                <a href="/retailseller/publishedProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Published Product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/seller/unpublishedProduct" class="nav-link">
+                <a href="/retailseller/unpublishedProduct" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Unpublished Product</p>
                 </a>
@@ -402,13 +402,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/seller/pendingOrders" class="nav-link">
+                <a href="/retailseller/pendingOrders" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Pending Orders</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/seller/deliverdOrders" class="nav-link">
+                <a href="/retailseller/deliverdOrders" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Deliverd Orders</p>
                 </a>

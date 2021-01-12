@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Retail retailseller | Dashboard</title>
+  <title>Retail seller | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -515,7 +515,7 @@
                       </div>
                     </form>
                     @if(Session::has('status'))
-                      <div class="alert alert-success" role="alert" style="width:40%">
+                      <div class="btn btn-primary" role="alert" style="width:40%">
                           {{ Session::get('status') }}
                       </div>
                       @endif

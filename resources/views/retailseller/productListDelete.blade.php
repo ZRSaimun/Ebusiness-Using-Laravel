@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Retail retailseller | Dashboard</title>
+    <title>Retail seller | Dashboard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -287,7 +287,7 @@
                     @endforeach
                 </table>
                 @if(Session::has('status'))
-                <div class="alert alert-success" role="alert" style="width:20%">
+                <div class="btn btn-primary" role="alert" style="width:20%">
                     {{ Session::get('status') }}
                 </div>
                 @endif

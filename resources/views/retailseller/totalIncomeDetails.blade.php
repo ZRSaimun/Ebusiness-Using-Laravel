@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Retail retailseller | Dashboard</title>
+  <title>Retail seller | Dashboard</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -155,7 +155,7 @@
     <!-- Brand Logo -->
     <a href="http://localhost:8000/retailseller" class="brand-link">
       <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light"> Retail retailseller</span>
+      <span class="brand-text font-weight-light"> Retail seller</span>
     </a>
 
     <!-- Sidebar -->
@@ -472,7 +472,7 @@
                   </thead>
                   @php($total=0)
                   @foreach ($orderList as $items)
-                  <input type="hidden" {{$total=$total+$items->seller_revenue }}>
+                  <input type="hidden" {{$total=$total+$items->retailseller_revenue }}>
 
                   
                   <tr>
@@ -491,7 +491,7 @@
                         {{$items->date }}
                     </td>
                     <td>
-                        {{$items->seller_revenue }}
+                        {{$items->retailseller_revenue }}
                     </td>
 
                 </tr>
@@ -515,7 +515,7 @@
               </div>
               <!-- Direct pc Print Code -->
               <div class="form-group col-sm-offset-10 col-sm-20">
-                  <button onclick="window.print();" class="btn btn-primary">Print Report</button>
+                  <button onclick="window.print();" class="btn btn-primary">Generate PDF</button>
               </div>
               </div>
               <!-- /.card-body -->

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Retail retailseller | Dashboard</title>
+    <title>Retail seller | Dashboard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -227,7 +227,7 @@
                         {{$items->date }}
                     </td>
                     <td>
-                        {{$items->seller_revenue }}
+                        {{$items->retailseller_revenue }}
                     </td>
                     <td>
                         <a href="reportCustomer/{{$items->customer_id }}" class="btn btn-success">Report
