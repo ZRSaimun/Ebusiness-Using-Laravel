@@ -30,14 +30,14 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputFirstName">Name</label>
-                                                        <input class="form-control py-4" id="inputFirstName" type="text" name="name" placeholder="Enter name" />
+                                                        <input class="form-control py-4" id="inputFirstName" type="text" name="name" placeholder="Enter name" value="{{old('name')}}"/>
                                                     </div>
                                                 </div>
                                             
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" for="inputEmailAddress">Email</label>
-                                                <input class="form-control py-4" id="inputEmailAddress" type="email" name="email" aria-describedby="emailHelp" placeholder="Enter email address" />
+                                                <input class="form-control py-4" id="inputEmailAddress" type="email" name="email" aria-describedby="emailHelp" placeholder="Enter email address" value="{{old('email')}}"/>
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-6">
@@ -49,10 +49,15 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label class="small mb-1" for="inputConfirmPassword">Confirm Password</label>
-                                                        <input class="form-control py-4" id="inputConfirmPassword" type="password" name="cpassword" placeholder="Confirm password" />
+                                                        <input class="form-control py-4" id="inputConfirmPassword" type="password" name="cpassword" placeholder="Confirm password"/>
                                                     </div>
                                                 </div>
                                             </div>
+                                                        <div class="alert alert-warning">
+                                                        @foreach($errors->all() as $err)
+                                                            {{$err}} <br>
+                                                        @endforeach
+                                                        </div>
                                             <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block" type='submit'>Create Account</button></div>
                                         </form>
                                     </div>

@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class catagoryModel extends Model
+class sellerpiModel extends Model
 {
-    use HasFactory;
-    protected $table = "catagory";
-    protected $primaryKey = "catagory_id ";
+    protected $table = "sellerpi";
+    protected $primaryKey =  "seller_id";
     public $timestamps = false;
 }

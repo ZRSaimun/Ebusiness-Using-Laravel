@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class catagoryModel extends Model
+class orderlistModel extends Model
 {
-    use HasFactory;
-    protected $table = "catagory";
-    protected $primaryKey = "catagory_id ";
+    protected $table = "orderlist";
+    protected $primaryKey =  "order_id";
     public $timestamps = false;
 }

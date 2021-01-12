@@ -5,10 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class catagoryModel extends Model
+class eventModel extends Model
 {
-    use HasFactory;
-    protected $table = "catagory";
-    protected $primaryKey = "catagory_id ";
+    protected $table = "event";
+    protected $primaryKey =  "event_id";
     public $timestamps = false;
 }

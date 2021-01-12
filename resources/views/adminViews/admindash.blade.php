@@ -14,7 +14,7 @@
                                     <div class="card-body">RUNNING EVENT</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         
-                                        <div class="small text-white"><h1><%= runningEvent.name %> </h1></div>
+                                        <div class="small text-white"><h1>{{$data['name']}}</h1></div>
                                     </div>
                                 </div>
                             </div>
@@ -23,7 +23,7 @@
                                     <div class="card-body">TOTAL USER</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                        
-                                        <div class="small text-white"><h1><%= userInfo.length %> </h1></div>
+                                        <div class="small text-white"><h1>{{count($user)}}</h1></div>
                                     </div>
                                 </div>
                             </div>
@@ -53,14 +53,14 @@
                                             </tr>
                                         </tfoot>
                                     <tbody>
-                                        <% userInfo.forEach(u=>{%>
+                                    @for($i=0; $i < count($user); $i++)
                                             
                                             <tr>
-                                                <td><%= u.user_id %> </td>
-                                                <td><%= u.email %> </td>
-                                                <td><%= u.type %> </td>
+                                                <td>{{$user[$i]['user_id']}}</td>
+                                                <td>{{$user[$i]['email']}}</td>
+                                                <td>{{$user[$i]['type']}}</td>
                                             </tr>
-                                            <%}) %> 
+                                    @endfor 
                                             
                                            
                                         </tbody>

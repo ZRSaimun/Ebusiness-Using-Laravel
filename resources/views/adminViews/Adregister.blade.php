@@ -53,6 +53,11 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                                    <div class="alert alert-warning">
+                                                        @foreach($errors->all() as $err)
+                                                            {{$err}} <br>
+                                                        @endforeach
+                                                        </div>
                                             <div class="form-group mt-4 mb-0"><button class="btn btn-primary btn-block">Create Account</button></div>
                                             
                                         </form>

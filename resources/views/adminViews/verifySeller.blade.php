@@ -1,5 +1,7 @@
 
- 
+ @extends('layouts.adminMain')
+
+@section('content')
                 <main>
                     <div class="container-fluid">
                         <h1 class="mt-4">Verify Seller</h1>
@@ -46,20 +48,20 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <% sellerInfo.forEach(s=>{%>
-                                                <% if(s.verified == 0){%>
-                                                    <tr id="verifySeller<%= s.user_id %>">
-                                                        <td><%= s.user_id %> </td>
-                                                        <td><%= s.name %></td>
-                                                        <td><%= s.email %></td>
-                                                        <td><%= s.address %></td>
-                                                        <td><%= s.phone_no %></td>
-                                                        <td><button   type="button" class="btn btn-success" data-value=<%= s.user_id %> >Verify</button></td>
+                                            @for($i=0; $i < count($seller); $i++)
+                                                 @if($seller[$i]['verified'] == 0)
+                                                    <tr id="verifySeller{{$seller[$i]['user_id']}}">
+                                                        <td>{{$seller[$i]['user_id']}}</td>
+                                                        <td>{{$seller[$i]['name']}}</td>
+                                                        <td>{{$seller[$i]['email']}}</td>
+                                                        <td>{{$seller[$i]['address']}}</td>
+                                                        <td>{{$seller[$i]['phone_no']}}</td>
+                                                        <td><button   type="button" class="btn btn-success" data-value="{{$seller[$i]['user_id']}}" >Verify</button></td>
                                                     </tr>
                                                     
-                                                    <%} %> 
+                                                    @endif 
                                                 
-                                                <%}) %> 
+                                                @endfor 
                                            
                                         </tbody>
                                     </table>
@@ -76,10 +78,11 @@
                            $('button').click(function (e) {
                                var Id =$(this).data("value") 
                                var elementId = `#verifySeller${Id}`;
+                           
                                       
                                        $.ajax({  
-                                               url:'/admin/verifySeller',  
-                                               method:'post',  
+                                               url:'/admin/SellerVerify',  
+                                               method:'get',  
                                                data:{'userId':Id},
                                                contentType: "application/x-www-form-urlencoded",  
                                                success:function(response){ 
@@ -87,15 +90,23 @@
                                                 $(elementId).remove()
                                                     setTimeout(()=> { 
                                                        $('#verify').addClass('alert alert-success')
-                                                       $('.alert').append(`${response.sv}`);
+                                                       $('.alert').append(`${response.success}`);
                                                        setTimeout(() => {
                                                            $('#verify').removeClass('alert alert-success');
                                                            $('#verify').empty();
                                                        }, 1500);
                                                     }, 200);
                                                },  
-                                               error:function(response){  
-                                                   alert(response.sv)  
+                                               error:function(response){
+                                                   
+                                                setTimeout(()=> { 
+                                                       $('#verify').addClass('alert alert-success')
+                                                       $('.alert').append(`${response.failed}`);
+                                                       setTimeout(() => {
+                                                           $('#verify').removeClass('alert alert-success');
+                                                           $('#verify').empty();
+                                                       }, 1500);
+                                                    }, 200);
                                                }  
                                            });
                                        
@@ -106,4 +117,4 @@
                    
 
                </script>
-                
+                @endSection
