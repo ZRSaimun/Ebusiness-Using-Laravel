@@ -70,6 +70,52 @@ Route::group(['middleware' => ['session']], function () {
     Route::get('/seller/reportCustomer', 'seller\sellController@reportCustomerView');
     Route::get('/seller/reportCustomer/{customerID}', 'seller\sellController@reportCustomerDetails');
     Route::post('/seller/reportCustomer/{customerID}', 'seller\sellController@reportCustomer');
+    
+    //Retail Seller
+    Route::get('/logout', 'retailseller\logoutController@index')->name('logout');
+
+Route::group(['middleware' => ['session']], function () {
+
+
+    Route::get('/retailseller/addProduct', 'retailseller\productController@index');
+    Route::post('/retailseller/addProduct', 'retailseller\productController@addProduct');
+
+    Route::get('/retailseller/deleteProduct', 'retailseller\productController@deleteProductView');
+    Route::post('/retailseller/deleteProduct', 'retailseller\productController@deleteProduct');
+
+    Route::get('/retailseller/publishedProduct', 'retailseller\productController@publishedProductView');
+    Route::post('/retailseller/publishedProduct', 'retailseller\productController@publishedProduct');
+
+    Route::get('/retailseller/unpublishedProduct', 'retailseller\productController@unPublishedProductView');
+    Route::post('/retailseller/unpublishedProduct', 'retailseller\productController@unPublishedProduct');
+
+    Route::get('/retailseller/editProduct', 'retailseller\productController@editProductView');
+    Route::post('/retailseller/editProduct', 'retailseller\productController@editProduct')->name('editPP');
+
+    Route::get('/retailseller/addCoupon', 'retailseller\productController@addCouponView');
+    Route::get('/retailseller/addCouponq', 'retailseller\productController@addCouponView1');
+    Route::post('/retailseller/addCoupon', 'retailseller\productController@addCoupon');
+
+    Route::get('/retailseller/addCatagory', 'retailseller\productController@addCatagoryView');
+    Route::post('/retailseller/addCatagory', 'retailseller\productController@addCatagory');
+
+    Route::get('/retailseller/reviewProduct', 'retailseller\sellController@reviewProductView');
+    Route::get('/retailseller/reviewProduct/{productID}', 'retailseller\sellController@reviewProductDetails');
+
+
+    Route::get('/retailseller/totalIncome', 'retailseller\sellController@totalIncomeView');
+    Route::get('retailseller/totalIncomeDetails/', 'retailseller\sellController@totalIncomeView');
+    Route::get('/retailseller/totalIncomeDetails/{productID}', 'retailseller\sellController@totalIncomeDetails');
+   
+    Route::get('/retailseller/deliverdOrders', 'retailseller\sellController@deliveredOrderView');
+
+    Route::get('/retailseller/pendingOrders', 'retailseller\sellController@pendingOrderView');
+    Route::post('/retailseller/pendingOrders', 'retailseller\sellController@pendingOrder');
+
+    Route::get('/retailseller/reportCustomer', 'retailseller\sellController@reportCustomerView');
+    Route::get('/retailseller/reportCustomer/{customerID}', 'retailseller\sellController@reportCustomerDetails');
+    Route::post('/retailseller/reportCustomer/{customerID}', 'retailseller\sellController@reportCustomer');
+    
 });
 
 Auth::routes();
@@ -77,6 +123,7 @@ Auth::routes();
 Route::get('/seller', 'seller\profileController@index')->name('home');
 Route::get('/login/github', 'Auth\LoginController@github')->name('github-login');
 Route::get('/login/github/redirect', 'Auth\LoginController@githubRedirect')->name('githubReditrect');
+Route::get('/retailseller', 'retailseller\profileController@index')->name('home');
 
 //ADMIN
 Route::get('/adminLogin','loginController@adminLogin')->name('adminLogin');
