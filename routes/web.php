@@ -1,8 +1,9 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
 //use app\Http\Controllers\loginC;
+use Illuminate\Support\Facades\Auth;
+
 /*	
 |--------------------------------------------------------------------------	
 | Web Routes	
@@ -17,16 +18,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//Route::get('/login','loginC@index')->name('login');
+//Route::get('/login', 'loginC@index')->name('login');
 //Route::get('/login', [loginC::class, 'index']);
 
-Route::get('/login', 'seller\loginController@index');
-Route::post('/login', 'seller\loginController@verify');
+
+//Route::get('/login', 'seller\loginController@index');
+//Route::post('/login', 'seller\loginController@verify');
+Route::get('/logout', 'seller\logoutController@index')->name('logout');
 
 
-
+//Route::get('/seller', 'seller\profileController@index');
 Route::group(['middleware' => ['session']], function () {
-    Route::get('/seller', 'seller\profileController@index');
+
 
     Route::get('/seller/addProduct', 'seller\productController@index');
     Route::post('/seller/addProduct', 'seller\productController@addProduct');
@@ -44,6 +47,7 @@ Route::group(['middleware' => ['session']], function () {
     Route::post('/seller/editProduct', 'seller\productController@editProduct')->name('editPP');
 
     Route::get('/seller/addCoupon', 'seller\productController@addCouponView');
+    Route::get('/seller/addCouponq', 'seller\productController@addCouponView1');
     Route::post('/seller/addCoupon', 'seller\productController@addCoupon');
 
     Route::get('/seller/addCatagory', 'seller\productController@addCatagoryView');
@@ -68,7 +72,11 @@ Route::group(['middleware' => ['session']], function () {
     Route::post('/seller/reportCustomer/{customerID}', 'seller\sellController@reportCustomer');
 });
 
+Auth::routes();
 
+Route::get('/seller', 'seller\profileController@index')->name('home');
+Route::get('/login/github', 'Auth\LoginController@github')->name('github-login');
+Route::get('/login/github/redirect', 'Auth\LoginController@githubRedirect')->name('githubReditrect');
 
 //ADMIN
 Route::get('/adminLogin','loginController@adminLogin')->name('adminLogin');
@@ -87,12 +95,20 @@ Route::get('/admin/retail/regi','adminRegistrationController@registrationOfSelle
 Route::post('/admin/retail/regi','adminRegistrationController@registrationOfSellerR');
 Route::get('/logout','logoutController@index')->name('logout');
 
-Route::get('/admin/profile','adminController@adminProfile')->name('adminProfile');
 
-Route::get('/admin/profile/PersonalInfo','adminController@AdminPresonalInfo')->name('AdminPresonalInfo');
-Route::post('/admin/profile/PersonalInfo','adminController@editAdminPresonalInfo');
-Route::get('/admin/profile/pic','adminController@adminProfilePic')->name('AdminProfilePic');
-Route::post('/admin/profile/pic','adminController@editAdminProfilePic');
+Route::get('/admin/adminRegi', 'adminRegistrationController@adminRegistrationview')->name('adminRegistration');
+Route::post('/admin/adminRegi', 'adminRegistrationController@adminRegistration');
+Route::get('/admin/retail/regi', 'adminRegistrationController@registrationOfSellerRView')->name('registrationOfSellerR');
+Route::post('/admin/retail/regi', 'adminRegistrationController@registrationOfSellerR');
+Route::get('/logout', 'logoutController@index')->name('logout');
+
+Route::get('/admin/profile', 'adminController@adminProfile')->name('adminProfile');
+
+
+Route::get('/admin/profile/PersonalInfo', 'adminController@AdminPresonalInfo')->name('AdminPresonalInfo');
+Route::post('/admin/profile/PersonalInfo', 'adminController@editAdminPresonalInfo');
+Route::get('/admin/profile/pic', 'adminController@adminProfilePic')->name('AdminProfilePic');
+Route::post('/admin/profile/pic', 'adminController@editAdminProfilePic');
 
 Route::get('/admin/seller','adminController@sellerListView')->name('sellerListView');
 Route::get('/admin/seller/blocking','adminController@blockingSeller');
@@ -129,3 +145,4 @@ Route::get('/admin/list/product','adminController@adminProductList')->name('admi
 Route::get('/admin/list/order','adminController@adminorderList')->name('adminorderList');
 
 });
+

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style1.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta name="_token" content="{!! csrf_token() !!}" />
 
 </head>
 
@@ -117,49 +118,93 @@
         <!-- Page Content  -->
         <div id="content" class="p-4 p-md-5">
             <div align="center">
-                <form method="POST" enctype="multipart/form-data">
-                    {{csrf_field()}}
-                    <span align="center">
-                        <h3>Add Coupon</h3>
 
-                    </span>
-                    <table width="50%" align="center" style="border-collapse: separate;border-spacing: 0 8px">
-                        <tr>
-                            <td width="45%">Coupon Code</td>
-                            <td width="10%">:</td>
-                            <td width="45%">
-                                <input type="text" name="coupon_code">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="45%">Percentage</td>
-                            <td width="10%">:</td>
-                            <td width="45%">
-                                <input type="number" name="percentage">
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <input type="submit" name="add" value="Add" />
-                            </td>
-                        </tr>
-                    </table>
-                </form>
+                <span align="center">
+                    <h3>Add Coupon</h3>
+
+                </span>
+
+
+                <table width="50%" align="center" style="border-collapse: separate;border-spacing: 0 8px">
+                    <tr>
+                        <td width="45%">Coupon Code</td>
+                        <td width="10%">:</td>
+                        <td width="45%">
+                            <input type="text" name="coupon_code" id="coupon_code">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="45%">Percentage</td>
+                        <td width="10%">:</td>
+                        <td width="45%">
+                            <input type="number" name="percentage" id='percentage'>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+
+
+                        </td>
+                    </tr>
+                </table>
+
                 @if(Session::has('status'))
                 <div class="alert alert-success" role="alert" style="width:20%">
                     {{ Session::get('status') }}
                 </div>
                 @endif
             </div>
+            <p id="data"></p>
         </div>
 
+        <button id="testButton" class="btn btn-success btn-submit">select</button>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+            crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+            alert("ajax ready");
+
+
+            $("#testButton").click(function(e) {
+                e.preventDefault();
+                alert(" enter ajax");
+                var coupon_code = $('#coupon_code').val();
+                var percentage = $('#percentage').val();
+                //alert(coupon_code);
+
+                $.ajax({
+                    url: '/seller/addCoupon',
+                    method: 'POST',
+                    data: {
+                        'coupon_code': coupon_code,
+                        'percentage': percentage
+                    },
+                    success: function(data) {
+                        //$('#coupon_code').innerHTML = 'fff';
+                        alert("ok");
+                    },
+                    error: function(data) {
+                        //$('#coupon_code').innerHTML = 'fff';
+                        alert("not ok");
+                    },
+                });
+
+            });
+        });
+        </script>
         <script src="/js/jquery.min.js "></script>
         <script src="/js/popper.js "></script>
         <script src="/js/bootstrap.min.js "></script>
         <script src="/js/main.js "></script>
 </body>
+
+
 
 </html>
