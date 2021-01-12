@@ -1,4 +1,6 @@
+@extends('layouts.adminMain')
 
+@section('content')
  
                 <main>
                     <div class="container-fluid">
@@ -45,29 +47,30 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <% customerInfo.forEach(customer=>{ %>
-                                                
+
+                                            @for($i=0; $i < count($customer); $i++)
                                                     <tr>
-                                                        <td><%= customer.name %></td>
-                                                        <td><%= customer.email %></td>
-                                                        <td><%= customer.address %></td>
-                                                        <td><%= customer.membership_status %></td>
-                                                        <td><%= customer.shopping_point %></td>
-                                                        <td><%= customer.phone_no %></td>
-                                                        <% if(customer.block_status == 0){%>
-                                                        <td> <a class="btn btn-danger" href="/admin/customer/<%= customer.customer_id %>">BAN</a></td>
-                                                    
-                                                    <% } else{%>
-                                                        <td> <a class="btn btn-warning" href="/admin/customer/unban/<%= customer.customer_id %>">undo</a></td>
-                                                    <%}%> 
+                                                        <td>{{$customer[$i]['name']}}</td>
+                                                        <td>{{$customer[$i]['email']}}</td>
+                                                        <td>{{$customer[$i]['address']}}</td>
+                                                        <td>{{$customer[$i]['membership_status']}}</td>
+                                                        <td>{{$customer[$i]['shopping_point']}}</td>
+                                                        <td>{{$customer[$i]['phone_no']}}</td>
+                                                        @if($customer[$i]['block_status'] == 0)
+                                                        <td> <a class="btn btn-danger" href="/admin/customer/{{$customer[$i]['customer_id']}}">BAN</a></td>
+                                                        @endif
+                                                        @if($customer[$i]['block_status'] == 1)
+                                                        <td> <a class="btn btn-warning" href="/admin/customer/unban/{{$customer[$i]['customer_id']}}">undo</a></td>
+                                                        @endif
                                                 </tr>
-                                           <% }) %>   
+                                           @endfor  
                                         </tbody>
                                     </table>
+                                    <a href='/admin/getCustomerPDF' type="button" id="button" class="btn btn-success">Genarate</a>
                                      
                                 </div>
                             </div>
                         </div>
                     </div>
                 </main>
-                
+  @endSection

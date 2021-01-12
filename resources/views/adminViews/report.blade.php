@@ -1,5 +1,7 @@
 
- 
+ @extends('layouts.adminMain')
+
+@section('content')
                 <main>
                     <div class="container-fluid">
                         <h1 class="mt-4">reports</h1>
@@ -44,52 +46,52 @@
                                         <tbody>
                                             
                                                 <!-- reporting user -->
-                                            <% reportInfo.forEach(report=>{%>
-                                            <tr id="dltReport<%= report.report_id%>">
-                                                <% customerInfo.forEach(c=>{%>
-                                                    <% if(c.user_id == report.fromuser){%>
-                                                        <td><%=  c.name %></td>
-                                                        <%}%>
-                                                    <%}) %> 
-                                                <% retailsellerInfo.forEach(r=>{%>
-                                                    <% if(r.user_id==report.fromuser){%>
-                                                        <td><%=  r.name %></td>
-                                                        <%} %> 
-                                                    <%}) %>
+                                                @for($i=0; $i < count($report); $i++)
+                                                     <tr id="dltReport{{$report[$i]['report_id']}}">
+                                                     @for($j=0; $j < count($customer); $j++)
+                                                      @if($customer[$j]['user_id'] == $report[$i]['fromuser'])
+                                                        <td>{{$customer[$j]['name']}}</td>
+                                                        @endif
+                                                    @endfor 
+                                                    @for($k=0; $k < count($retailer); $k++)
+                                                      @if($retailer[$k]['user_id'] == $report[$i]['fromuser'])
+                                                        <td>{{$retailer[$k]['name']}}</td>
+                                                        @endif
+                                                    @endfor
                                             
                                                
-                                                <% sellerInfo.forEach(s=>{%>
-                                                    <% if(s.user_id==report.fromuser){%>
-                                                        <td><%=  s.name %></td>
-                                                        <%} %> 
-                                                    <%}) %>
-
+                                                    @for($p=0; $p < count($seller); $p++)
+                                                      @if($seller[$p]['user_id'] == $report[$i]['fromuser'])
+                                                        <td>{{$seller[$p]['name']}}</td>
+                                                        @endif
+                                                    @endfor
+                                                    
 
                                             <!-- complain for -->
-                                                <% customerInfo.forEach(c=>{%>
-                                                    <% if(c.user_id == report.tomuser){%>
-                                                        <td><%=  c.name %></td>
-                                                        <%}%>
-                                                    <%}) %> 
-                                                <% retailsellerInfo.forEach(r=>{%>
-                                                    <% if(r.user_id==report.touser){%>
-                                                        <td><%=  r.name %></td>
-                                                        <%} %> 
-                                                    <%}) %>
+                                                     @for($a=0; $a < count($customer); $a++)
+                                                      @if($customer[$a]['user_id'] == $report[$i]['touser'])
+                                                        <td>{{$customer[$a]['name']}}</td>
+                                                        @endif
+                                                    @endfor 
+                                                    @for($k=0; $k < count($retailer); $k++)
+                                                      @if($retailer[$k]['user_id'] == $report[$i]['touser'])
+                                                        <td>{{$retailer[$k]['name']}}</td>
+                                                        @endif
+                                                    @endfor
                                             
                                                
-                                                <% sellerInfo.forEach(s=>{%>
-                                                    <% if(s.user_id==report.touser){%>
-                                                        <td><%=  s.name %></td>
-                                                        <%} %> 
-                                                    <%}) %>
-                                                    <td><%= report.report_msg %> </td>
+                                                    @for($p=0; $p < count($seller); $p++)
+                                                      @if($seller[$p]['user_id'] == $report[$i]['touser'])
+                                                        <td>{{$seller[$p]['name']}}</td>
+                                                        @endif
+                                                    @endfor
+                                                    <td>{{$report[$i]['report_msg']}} </td>
 
                                             
-                                                    <td><button   type="button" class="btn btn-danger" data-value=<%= report.report_id %> >Delete</button></td>
+                                                    <td><button   type="button" class="btn btn-danger" data-value="{{$report[$i]['report_id']}}" >Delete</button></td>
                                                 </tr>
 
-                                         <%}) %> 
+                                         @endfor 
                                         </tbody>
                                     </table>
                                 </div>
@@ -101,32 +103,36 @@
 
                 <script>
                     $(document).ready(function() {
+                        
                     
                         $('button').click(function (e) {
                                var Id =$(this).data("value") 
                                var elementId = `#dltReport${Id}`;
-                              
+                             
+                           
                                       
                                        $.ajax({  
                                                url:'/admin/report/delete',  
-                                               method:'post',  
+                                               method:'get',  
                                                data:{'userId':Id},
                                                contentType: "application/x-www-form-urlencoded",  
                                                success:function(response){ 
                                                    
-                                                $(elementId).remove();
+                                                $(elementId).remove()
                                                     setTimeout(()=> { 
                                                        $('#dlt').addClass('alert alert-success')
-                                                       $('.alert').append(`${response.r}`);
+                                                       $('.alert').append(`${response.success}`);
                                                        setTimeout(() => {
                                                            $('#dlt').removeClass('alert alert-success');
                                                            $('#dlt').empty();
                                                        }, 1500);
                                                     }, 200);
                                                },  
-                                               error:function(response){  
-                                                   alert(response.r)  
+                                               error:function(response){
+                                                   
+                                                alert('your report will be listed')
                                                }  
+                                            
                                            });
                                        
                                    });
@@ -134,4 +140,4 @@
                    
 
                </script>
-                
+                @endSection('content')

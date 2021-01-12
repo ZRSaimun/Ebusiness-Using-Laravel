@@ -1,62 +1,70 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1 align="center">
+Ebusiness
+</h1>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Cover With
 
-## About Laravel
+![Screenshot_12](https://user-images.githubusercontent.com/60029434/103584760-27bf9180-4f0c-11eb-89e1-95e4ed3a7702.jpg)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## In This Project
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+There are 4 types of users Retail-Seller,Admin,Customer & Seller
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Retail-Seller 
 
-## Learning Laravel
+Retail-Seller DashBoard
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+![Screenshot_17](https://user-images.githubusercontent.com/60029434/104094695-ac1f6500-52bc-11eb-9c45-47b43bec7f08.jpg)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Succesfully add product page
 
-## Laravel Sponsors
+![Screenshot_9](https://user-images.githubusercontent.com/60029434/103486457-49dfe380-4e28-11eb-8eeb-b0500f7c24cc.jpg)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Rivew Product Page
 
-### Premium Partners
+![Screenshot_10](https://user-images.githubusercontent.com/60029434/103557473-77d32f80-4edd-11eb-8be2-304cf0ffd808.jpg)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+view Review Massage
 
-## Contributing
+![Screenshot_11](https://user-images.githubusercontent.com/60029434/103557881-0778de00-4ede-11eb-8fa3-ebdf536b5208.jpg)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Add Coupon Page
 
-## Code of Conduct
+![Screenshot_18](https://user-images.githubusercontent.com/60029434/104094753-04eefd80-52bd-11eb-81e6-f7de993165f7.jpg)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Add Catagory Page
 
-## Security Vulnerabilities
+![Screenshot_19](https://user-images.githubusercontent.com/60029434/104094782-3667c900-52bd-11eb-9280-a04946ed492c.jpg)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Deliverd Product
 
-## License
+![Screenshot_26](https://user-images.githubusercontent.com/60029434/104094981-84310100-52be-11eb-81fc-d717ddf9dc48.jpg)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Total Revenue 
+
+![Screenshot_21](https://user-images.githubusercontent.com/60029434/104094819-7a5ace00-52bd-11eb-975a-45c4828f92d4.jpg)
+
+Report Customer
+
+![Screenshot_23](https://user-images.githubusercontent.com/60029434/104094868-c73ea480-52bd-11eb-9e7e-78847d8f8de9.jpg)
+
+Which Customer You Want to report
+
+![Screenshot_24](https://user-images.githubusercontent.com/60029434/104094907-0967e600-52be-11eb-8458-9e8b3555e007.jpg)
+
+Which Product Need to Published 
+
+![Screenshot_25](https://user-images.githubusercontent.com/60029434/104094933-30beb300-52be-11eb-818c-bd0dc8a56eca.jpg)
+
+Print And Download PDF
+
+![Screenshot_22](https://user-images.githubusercontent.com/60029434/104095020-c22e2500-52be-11eb-98bd-794a1b3074fc.jpg)
+
+Invoice System page view 
+
+![Screenshot_15](https://user-images.githubusercontent.com/60029434/103607364-ebf3ee80-4f42-11eb-9417-9321c6a59b96.jpg)
+
+complete Social login by github 
+
+![Screenshot_16](https://user-images.githubusercontent.com/60029434/103607525-50af4900-4f43-11eb-95c1-2ff1af048a8c.jpg)
+

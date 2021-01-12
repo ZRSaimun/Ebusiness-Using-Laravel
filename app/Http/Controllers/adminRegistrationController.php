@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\userModel;
 use App\Models\retailsellerpiModel;
 use App\Models\adminpiModel;
+use App\Http\Requests\retailerRequest;
+use App\Http\Requests\adminRequest;
 use Carbon\Carbon;
 
 
@@ -14,7 +16,7 @@ class adminRegistrationController extends Controller
     public function registrationOfSellerRView(){
         return view('adminViews.registerR');
     }
-    public function registrationOfSellerR(Request $req){
+    public function registrationOfSellerR(retailerRequest $req){
         $user = new userModel();
 
                 $user->email     = $req->email;
@@ -53,7 +55,7 @@ class adminRegistrationController extends Controller
     public function adminRegistrationView(){
         return view('adminViews.adregister');
     }
-    public function adminRegistration(Request $req){
+    public function adminRegistration(adminRequest $req){
         $admin = new adminpiModel();
                 $admin->name            = $req->name; 
                 $admin->email           = $req->email;

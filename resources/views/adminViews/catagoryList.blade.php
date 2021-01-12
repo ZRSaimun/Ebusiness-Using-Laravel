@@ -1,11 +1,13 @@
+@extends('layouts.adminMain')
 
+@section('content')
  
                 <main>
                     <div class="container-fluid">
-                        <h1 class="mt-4">Retail Manager List</h1>
+                        <h1 class="mt-4">catagory List</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Retail Manager</li>
+                            <li class="breadcrumb-item active">List</li>
                         </ol>
                         <!-- <div class="card mb-4">
                             <div class="card-body">
@@ -17,46 +19,31 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-1"></i>
-
+                                
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Address</th>
-                                                <th>Date of Birth</th>
-                                                <th>phone No</th>
-                                                <th>level</th>
-                                                <th>Action</th>
+                                                <th>Catagory ID</th>
+                                                <th> catagory Name</th>
                                             </tr>
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Address</th>
-                                                <th>Date of Birth</th>
-                                                <th>phone No</th>
-                                                <th>level</th>
-                                                <th>Action</th>
+                                                <th>Catagory ID</th>
+                                                <th> catagory Name</th>
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <% retailsellerInfo.forEach(r=>{ %>
+                                        @for($i=-0; $i < count($catagory); $i++)
+                                                
                                                 <tr>
-                                                    <td><%= r.name %> </td>
-                                                    <td><%= r.email %></td>
-                                                    <td><%= r.address %></td>
-                                                    <td><%= moment(r.dob).format(shortDateFormat) %></td>
-                                                    <td><%= r.phone_no %></td>
-                                                    <td><%= r.level %></td>
-                                                    <td> <a class="btn btn-danger"  href="/admin/retailManager/delete/<%= r.user_id %>">Delete</a></td>
+                                                    <td>{{$catagory[$i]['catagory_id']}}</td>
+                                                    <td>{{$catagory[$i]['catagory_name']}}</td>
                                                 </tr>
-
-                                           <% }) %> 
+                                            @endfor> 
                                             
                                         </tbody>
                                     </table>
@@ -65,4 +52,4 @@
                         </div>
                     </div>
                 </main>
-                
+@endSection

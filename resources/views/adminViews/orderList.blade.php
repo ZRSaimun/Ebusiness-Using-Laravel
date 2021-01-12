@@ -1,4 +1,6 @@
+@extends('layouts.adminMain')
 
+@section('content')
  
                 <main>
                     <div class="container-fluid">
@@ -26,7 +28,6 @@
                                             <tr>
                                                 <th>Order ID</th>
                                                 <th>customer Id</th>
-                                                <th>User ID</th>
                                                 <th>Product ID</th>
                                                 <th>Quantity</th>
                                                 <th>Order Status</th>
@@ -39,7 +40,7 @@
                                             <tr>
                                                 <th>Order ID</th>
                                                 <th>customer Id</th>
-                                                <th>User ID</th>
+                                                
                                                 <th>Product ID</th>
                                                 <th>Quantity</th>
                                                 <th>Order Status</th>
@@ -49,44 +50,34 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <% orderInfo.forEach(order=>{ %>
+                                        @for($i=0; $i < count($order); $i++)
                                                 <tr>
-                                                    <td><%= order.order_id %> </td>
-                                                    <% customerInfo.forEach(c=>{%>
-                                                        <% if(c.customer_id==order.customer_id){%>
-                                                                <td><%=c.name%></td>
-                                                            <%} %> 
+                                                    <td>{{$order[$i]['order_id']}}</td>
+                                                    @for($j=0; $j < count($customer); $j++)
+                                                        @if($customer[$j]['customer_id']==$order[$i]['customer_id'])
+                                                                <td>{{$customer[$j]['name']}}></td>
+                                                           @endif
                                                         
-                                                        <%}) %> 
+                                                        @endfor
 
                                                     
-                                                        <% sellerInfo.forEach(s=>{%>
-                                                            <% if(s.user_id == order.user_id){%>
-                                                                <td><%=  s.name %></td>
-                                                                <%}%>
-                                                            <%}) %> 
-                                                        <% retailsellerInfo.forEach(r=>{%>
-                                                            <% if(r.user_id==order.user_id){%>
-                                                                <td><%=  r.name %></td>
-                                                                <%} %> 
-                                                            <%}) %>
-
+                                                       
                                                         
-                                                    <% productInfo.forEach(p=>{%>
-                                                            <% if(p.product_id==order.product_id){%>
-                                                                <td><%=p.product_name%></td>
-                                                                <%} %> 
-                                                                
-                                                            <%}) %>
+                                                        @for($k=0; $k < count($product); $k++)
+                                                        @if($product[$k]['product_id']==$order[$i]['product_id'])
+                                                                <td>{{$product[$k]['product_name']}}</td>
+                                                           @endif
+                                                        
+                                                        @endfor
                                                    
-                                                    <td><%= order.quantity %> </td>
-                                                    <td><%= order.order_status %> </td>
-                                                    <td><%= order.date %> </td>
-                                                    <td><%= order.seller_revenue %> </td>
-                                                    <td><%= order.company_revenue %> </td>
+                                                    <td>{{$order[$i]['quantity']}}</td>
+                                                    <td>{{$order[$i]['order_status']}}</td>
+                                                    <td>{{$order[$i]['date']}}</td>
+                                                    <td>{{$order[$i]['seller_revenue']}}</td>
+                                                    <td>{{$order[$i]['company_revenue']}} </td>
                                                 </tr>
 
-                                          <%  }) %> 
+                                            @endfor
                                             
                                         </tbody>
                                     </table>
@@ -95,4 +86,4 @@
                         </div>
                     </div>
                 </main>
-                
+@endSection('content')

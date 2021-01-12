@@ -1,4 +1,6 @@
+@extends('layouts.adminMain')
 
+@section('content')
  
                 <main>
                     <div class="container-fluid">
@@ -37,13 +39,13 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-                                            <% eventInfo.forEach(e=>{ %>
+                                        @for($i=0; $i < count($event); $i++)
                                                 <tr>
-                                                    <td><%= e.event_id %> </td>
-                                                    <td><%= e.event_name %> </td>
-                                                    <td><%= e.event_description  %> </td>
+                                                    <td>{{$event[$i]['event_id']}}</td>
+                                                    <td>{{$event[$i]['event_name']}}</td>
+                                                    <td>{{$event[$i]['event_description']}} </td>
                                                 </tr>
-                                            <%}) %> 
+                                        @endfor
                                             
                                            
                                         </tbody>
@@ -53,4 +55,4 @@
                         </div>
                     </div>
                 </main>
-                
+  @endSection('content')

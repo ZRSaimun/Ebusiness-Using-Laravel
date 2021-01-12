@@ -21,9 +21,11 @@ Route::get('/', function () {
 //Route::get('/login', 'loginC@index')->name('login');
 //Route::get('/login', [loginC::class, 'index']);
 
+
 //Route::get('/login', 'seller\loginController@index');
 //Route::post('/login', 'seller\loginController@verify');
 Route::get('/logout', 'seller\logoutController@index')->name('logout');
+
 
 //Route::get('/seller', 'seller\profileController@index');
 Route::group(['middleware' => ['session']], function () {
@@ -69,18 +71,30 @@ Route::group(['middleware' => ['session']], function () {
     Route::get('/seller/reportCustomer/{customerID}', 'seller\sellController@reportCustomerDetails');
     Route::post('/seller/reportCustomer/{customerID}', 'seller\sellController@reportCustomer');
 });
+
 Auth::routes();
 
 Route::get('/seller', 'seller\profileController@index')->name('home');
 Route::get('/login/github', 'Auth\LoginController@github')->name('github-login');
 Route::get('/login/github/redirect', 'Auth\LoginController@githubRedirect')->name('githubReditrect');
 
+//ADMIN
+Route::get('/adminLogin','loginController@adminLogin')->name('adminLogin');
+Route::post('/adminLogin','loginController@verifyAdmin');
 
+Route::get('/adminLogin/github','loginController@githubloginSocialAdmin')->name('adminSocialLogin');
+Route::get('/adminLogin/github/redirect','loginController@githubloginSocialRedirectAdmin')->name('adminSocialLoginRedirect');
 
+Route::get('/admin','adminController@adminDashboard')->name('adminDashboard')->middleware('adminRoute');
 
-Route::get('/admin', 'adminController@adminDashboard')->name('adminDashboard');
-Route::get('/adminLogin', 'loginController@adminLogin')->name('adminLogin');
-Route::post('/adminLogin', 'loginController@verifyAdmin');
+Route::group(['middleware' => ['adminVerifyy']], function () {
+
+Route::get('/admin/adminRegi','adminRegistrationController@adminRegistrationview')->name('adminRegistration');
+Route::post('/admin/adminRegi','adminRegistrationController@adminRegistration');
+Route::get('/admin/retail/regi','adminRegistrationController@registrationOfSellerRView')->name('registrationOfSellerR');
+Route::post('/admin/retail/regi','adminRegistrationController@registrationOfSellerR');
+Route::get('/logout','logoutController@index')->name('logout');
+
 
 Route::get('/admin/adminRegi', 'adminRegistrationController@adminRegistrationview')->name('adminRegistration');
 Route::post('/admin/adminRegi', 'adminRegistrationController@adminRegistration');
@@ -90,7 +104,45 @@ Route::get('/logout', 'logoutController@index')->name('logout');
 
 Route::get('/admin/profile', 'adminController@adminProfile')->name('adminProfile');
 
+
 Route::get('/admin/profile/PersonalInfo', 'adminController@AdminPresonalInfo')->name('AdminPresonalInfo');
 Route::post('/admin/profile/PersonalInfo', 'adminController@editAdminPresonalInfo');
 Route::get('/admin/profile/pic', 'adminController@adminProfilePic')->name('AdminProfilePic');
 Route::post('/admin/profile/pic', 'adminController@editAdminProfilePic');
+
+Route::get('/admin/seller','adminController@sellerListView')->name('sellerListView');
+Route::get('/admin/seller/blocking','adminController@blockingSeller');
+Route::get('/admin/seller/delete','adminController@deleteSeller');
+Route::get('/admin/seller/add','adminController@adminAddSellerView')->name('adminAddSellerView');
+Route::post('/admin/seller/add','adminController@adminAddSeller');
+Route::get('/admin/verifySeller','adminController@adminVerifySellerView')->name('adminVerifySellerView');
+Route::get('/admin/SellerVerify','adminController@adminSellerVerify')->name('adminSellerVerify');
+
+
+Route::get('/admin/retailManager','adminController@adminRetailView')->name('adminRetailView');
+Route::get('/admin/retailManager/delete','adminController@deleteRetail');
+
+Route::get('/admin/event/addEvent','adminController@addEventView')->name('addEventView');
+Route::post('/admin/event/addEvent','adminController@addEvent');
+Route::get('/admin/event','adminController@eventView')->name('eventView');
+
+Route::get('/admin/customer','adminController@customerView')->name('customerView');
+Route::get('/admin/customer/{id}','adminController@customerBanView')->name('customerBanView');
+Route::post('/admin/customer/{id}','adminController@customerBan');
+Route::get('/admin/customer/unban/{id}','adminController@customerUnban')->name('customerUnban');
+
+Route::get('/admin/getCustomerPDF','adminPdfController@index')->name('customerPDF');
+
+Route::get('/admin/list/catagory','adminController@aCatagoryView')->name('aCatagoryView');
+Route::get('/admin/revenue','adminController@revenueView')->name('revenueView');
+
+Route::get('/admin/revenueGenarate','adminPdfController@index1')->name('revenueGenaratePDF');
+
+Route::get('/admin/reportinggView','adminController@reportinggView')->name('reportingg');
+Route::get('/admin/report/delete','adminController@reportDelete');
+
+Route::get('/admin/list/product','adminController@adminProductList')->name('adminProductList');
+Route::get('/admin/list/order','adminController@adminorderList')->name('adminorderList');
+
+});
+

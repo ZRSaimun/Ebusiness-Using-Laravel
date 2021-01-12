@@ -40,9 +40,7 @@
 						</button>
 					</div>
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
-							login with GitHub
-						</button>
+						<a href="/adminLogin/github" class="login100-form-btn">Sign In With Github</a>
 					</div>
 	
 				</form>

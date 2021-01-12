@@ -10,5 +10,5 @@ class productModel extends Model
     use HasFactory;
     protected $table = "product";
     protected $primaryKey = "product_id ";
-    public $timestamp = false;
+    public $timestamps = false;
 }
