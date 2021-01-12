@@ -474,6 +474,7 @@
                   @foreach ($orderList as $items)
                   <input type="hidden" {{$total=$total+$items->retailseller_revenue }}>
 
+
                   
                   <tr>
                     <td>

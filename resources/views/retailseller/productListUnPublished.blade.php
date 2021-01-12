@@ -204,6 +204,7 @@
                         <th width="20%">Action</th>
                     </tr>
 
+
                     @foreach ($product as $items)
                     <tr>
                         <td>
