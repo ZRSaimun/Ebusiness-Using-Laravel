@@ -331,46 +331,6 @@
         <script src=" /js/bootstrap.min.js "></script>
         <script src=" /js/main.js "></script>
 
-        <script>
-        $('#editForm').submit(function(e) {
-            e.preventDefault();
-            //alert("ajax clicked");
-
-            let product_id = $('#productID').val();
-            alert(product_id);
-            let name = $('#name').val();
-            let quantity = $('#quantity').val();
-            let price = $('#price').val();
-            let catagory = $('#catagory').val();
-            let description = $('#description').val();
-            let exclusive = $('#exclusive').val();
-            let __token = $("input[name=__token]").val();
-            alert("ajax clicked done");
-            $.ajax({
-                type: "POST",
-                url: "{{route('editPP')}}",
-                datatype: json,
-                data: {
-                    product_id: product_id,
-                    name: name,
-                    quantity: quantity,
-                    price: price,
-                    catagory: catagory,
-                    description: description,
-                    exclusive: exclusive,
-                    __token: __token
-                },
-                success: function(data) {
-                    console.log(data);
-                    alert(data);
-                    if (response) {
-                        $('#result').append("success");
-                    }
-                }
-
-            });
-        });
-        </script>
 
 
 

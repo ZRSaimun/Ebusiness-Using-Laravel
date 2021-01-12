@@ -103,7 +103,7 @@ class productController extends Controller
         if (DB::table('product')->where('product_id', $productID)->update(['published' => 0])) {
 
             $request->session()->flash('status', 'ProductID:' . $productID . ' successfully UnPublished!');
-            $product = DB::table('product')->where('published', $publish)->get();
+            $product = DB::table('product')->where('user_id', $request->session()->get('user'))->where('published', $publish)->get();
             return view('seller.productListPublished')->with('product', $product);
         }
     }
@@ -124,7 +124,7 @@ class productController extends Controller
         if (DB::table('product')->where('product_id', $productID)->update(['published' => 1])) {
 
             $request->session()->flash('status', 'successfully Published!');
-            $product = DB::table('product')->where('published', $publish)->get();
+            $product = DB::table('product')->where('user_id', $request->session()->get('user'))->where('published', $publish)->get();
             return view('seller.productListUnPublished')->with('product', $product);
         }
     }
@@ -202,7 +202,7 @@ class productController extends Controller
 
             //return response()->json(['success' => 'Data is successfully added']);
 
-            $product = DB::table('product')->get();
+            $product = DB::table('product')->where('user_id', $request->session()->get('user'))->get();
             $catagoryID = DB::table('catagory')->get();
             return view('seller.productListEdit')->with('product', json_decode($product, true))->with('catagoryID', $catagoryID);
         }
@@ -262,28 +262,50 @@ class productController extends Controller
         //$catagoryID = DB::table('coupon')->get();
         //echo $catagoryID;
         //return view('seller.addProduct', compact($catagoryID));
+        //echo "fucntion";
         return view('seller.addCoupon');
     }
+    public function addCouponView1(Request $request)
+    {
+        //$catagoryID = DB::table('coupon')->get();
+        //echo $catagoryID;
+        //return view('seller.addProduct', compact($catagoryID));
+        //echo "fucntion";
+        return view('seller.addCatagory');
+    }
+
     public function addCoupon(Request $request)
     {
+        //echo "fucntion";
+        //return view('seller.addCatagory');
         $coupon = new couponModel();
+        //$result = 1;
         $coupon->coupon_code =  $request->coupon_code;
         $coupon->percentage =  $request->percentage;
         //echo $product;
-        DB::table('coupon_seller')->insert([
+        /*DB::table('coupon_seller')->insert([
             'couponSeller' =>  $coupon->coupon_code,
             'percentage' => $coupon->percentage
-        ]);
+        ]);*/
+        //echo "sdfsdf";
+        echo $coupon->coupon_code;
+        echo $coupon->percentage;
+        //echo $product;
 
         if (DB::table('coupon')->insert([
             'coupon_code' =>  $coupon->coupon_code,
             'percentage' => $coupon->percentage
         ])) {
             $request->session()->flash('status', 'successful!');
-            return view('seller.addCoupon');
+            return response()->json([
+                'success' => 'added'
+            ]);
+            //return json_encode($result);
         } else {
             $request->session()->flash('status', 'UNsuccessful!');
-            return view('seller.addCoupon');
+            return response()->json([
+                'success' => 'not added'
+            ]);
         }
     }
 

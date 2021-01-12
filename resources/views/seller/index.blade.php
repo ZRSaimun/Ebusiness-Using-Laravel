@@ -32,25 +32,10 @@
             <div class="p-4 pt-5">
                 <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
                 <ul class="list-unstyled components mb-5">
-                    <!-- <li class="active">
-                        <a href="/seller">Profile</a>
-                    </li> -->
                     <li class="active">
-                        <a href="#mainSubmenu" data-toggle="collapse" aria-expanded="false"
-                            class="dropdown-toggle">Profile</a>
-                        <ul class="collapse list-unstyled" id="mainSubmenu">
-                            <li>
-                                <a href="/seller/addProduct">Edit profile</a>
-                            </li>
-                            <li>
-                                <a href="/seller/deleteProduct">Delete Profile</a>
-                            </li>
-                            <li>
-                                <a href="/seller/editProduct">Change Password</a>
-                            </li>
-
-                        </ul>
+                        <a href="/seller">Profile</a>
                     </li>
+
                     <li>
                         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false"
                             class="dropdown-toggle">Products</a>
@@ -165,7 +150,7 @@
                             <td>Name</td>
                             <td>:</td>
                             <td>
-                                {{ $name}}
+                                {{ $name }}
                             </td>
                         </tr>
                         <tr style="height: 50px;background-color: #f5f5f5;">
@@ -175,13 +160,7 @@
                                 {{ $email}}
                             </td>
                         </tr>
-                        <tr style="height: 50px;background-color: #f5f5f5;">
-                            <td>Address</td>
-                            <td>:</td>
-                            <td>
-                                {{$address}}
-                            </td>
-                        </tr>
+
                     </table>
                 </div>
             </form>

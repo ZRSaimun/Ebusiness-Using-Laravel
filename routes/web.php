@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 //use app\Http\Controllers\loginC;
+
 /*	
 |--------------------------------------------------------------------------	
 | Web Routes	
@@ -16,16 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//Route::get('/login','loginC@index')->name('login');
+//Route::get('/login', 'loginC@index')->name('login');
 //Route::get('/login', [loginC::class, 'index']);
 
-Route::get('/login', 'seller\loginController@index');
-Route::post('/login', 'seller\loginController@verify');
+//Route::get('/login', 'seller\loginController@index');
+//Route::post('/login', 'seller\loginController@verify');
 Route::get('/logout', 'seller\logoutController@index')->name('logout');
 
-
+//Route::get('/seller', 'seller\profileController@index');
 Route::group(['middleware' => ['session']], function () {
-    Route::get('/seller', 'seller\profileController@index');
+
 
     Route::get('/seller/addProduct', 'seller\productController@index');
     Route::post('/seller/addProduct', 'seller\productController@addProduct');
@@ -43,6 +44,7 @@ Route::group(['middleware' => ['session']], function () {
     Route::post('/seller/editProduct', 'seller\productController@editProduct')->name('editPP');
 
     Route::get('/seller/addCoupon', 'seller\productController@addCouponView');
+    Route::get('/seller/addCouponq', 'seller\productController@addCouponView1');
     Route::post('/seller/addCoupon', 'seller\productController@addCoupon');
 
     Route::get('/seller/addCatagory', 'seller\productController@addCatagoryView');
@@ -66,3 +68,8 @@ Route::group(['middleware' => ['session']], function () {
     Route::get('/seller/reportCustomer/{customerID}', 'seller\sellController@reportCustomerDetails');
     Route::post('/seller/reportCustomer/{customerID}', 'seller\sellController@reportCustomer');
 });
+Auth::routes();
+
+Route::get('/seller', 'seller\profileController@index')->name('home');
+Route::get('/login/github', 'Auth\LoginController@github')->name('github-login');
+Route::get('/login/github/redirect', 'Auth\LoginController@githubRedirect')->name('githubReditrect');
