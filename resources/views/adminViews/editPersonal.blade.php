@@ -26,13 +26,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="agileits-top">
 				<form method="post">
                     @csrf
-					<input class="text" type="text" name="Username" placeholder="Username/student Id" required="" value="" readonly>
-                    <input class="text" type="text" name="name" placeholder="name" required="" value="">
-					<input class="text" type="password" name="password" id="myInput" placeholder="Password" required="" value="">
+					<input class="text" type="text" name="name" placeholder="name" required="" value="{{$admin[0]['name']}}">
+                    <input class="text" type="text" name="email" placeholder="email" required="" value="{{$admin[0]['email']}}">
+					<input class="text" type="password" name="password" id="myInput" placeholder="Password" required="" value="{{$admin[0]['password']}}">
 					<input type="checkbox" onclick="myFunction()" value="Show Password">
-                    <input class="text" type="text" name="mobile" placeholder="mobile" required="" value="">
-					<input class="text" type="text" name="collage" placeholder="collage" required="" value="">
-                    <input class="text" type="text" name="dormitory" placeholder="dormitory" required="" value="">
+                    <input class="text" type="text" name="phone_no" placeholder="phone_no" required="" value="{{$admin[0]['phone_no']}}">
+		
 					<input type="submit" value="UPDATE">
 				</form>
 			</div>

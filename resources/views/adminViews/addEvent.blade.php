@@ -6,17 +6,6 @@
             <div id="layoutAuthentication_content">
                 <main>
 
-                    
-                      <% if(typeof alert != 'undefined') { %>
-                        <% alert.forEach(function(error) { %>
-                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                <%= error.msg %>
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                        <% }) %>
-                    <% } %> 
 
                     <div class="container">
                         <div class="row justify-content-center">
@@ -26,14 +15,20 @@
                                     <div class="card-body">
                                         <div class="small mb-3 text-muted">Add an amaizing event.</div>
                                         <form method="POST">
+                                        @csrf
                                             <div class="form-group">
                                                 <label class="small mb-1">Name</label>
-                                                <input class="form-control py-4"  type="text" name="name" placeholder="Event Name" />
+                                                <input class="form-control py-4"  type="text" name="name" placeholder="Event Name" value="{{old('name')}}" />
                                             </div>
                                             <div class="form-group">
                                                 <label class="small mb-1" >Description</label>
-                                                <input class="form-control py-4" type="text" name="description" placeholder="Description" />
+                                                <input class="form-control py-4" type="text" name="description" placeholder="Description" value="{{old('description')}}" />
                                             </div>
+                                                    <div class="alert alert-warning">
+                                                        @foreach($errors->all() as $err)
+                                                            {{$err}} <br>
+                                                        @endforeach
+                                                        </div>
                                           
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <button type="submit" class="btn btn-primary">Confirm</button>

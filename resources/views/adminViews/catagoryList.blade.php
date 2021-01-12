@@ -1,0 +1,55 @@
+@extends('layouts.adminMain')
+
+@section('content')
+ 
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">catagory List</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+                            <li class="breadcrumb-item active">List</li>
+                        </ol>
+                        <!-- <div class="card mb-4">
+                            <div class="card-body">
+                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
+                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
+                                .
+                            </div>
+                        </div> -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Catagory ID</th>
+                                                <th> catagory Name</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>Catagory ID</th>
+                                                <th> catagory Name</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+                                        @for($i=-0; $i < count($catagory); $i++)
+                                                
+                                                <tr>
+                                                    <td>{{$catagory[$i]['catagory_id']}}</td>
+                                                    <td>{{$catagory[$i]['catagory_name']}}</td>
+                                                </tr>
+                                            @endfor> 
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+@endSection

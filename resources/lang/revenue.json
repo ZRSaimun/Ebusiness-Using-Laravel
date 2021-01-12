@@ -1,0 +1,12 @@
+[
+    {
+        "month1": 132500,
+        "month2": 36696,
+        "month3": 7350
+    },
+    {
+        "priviousMonth": "January",
+        "priviousMonth1": "December",
+        "priviousMonth2": "November"
+    }
+]
