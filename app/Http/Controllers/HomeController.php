@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use App\Models\retailsellerModel;
 use App\Models\sellerModel;
 use Illuminate\Support\Facades\Auth;
 
