@@ -2,15 +2,43 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\DB;
+//use App\User;
+
 use App\Models\adminpiModel;
 use Socialite;
+
 
 class loginController extends Controller
 {
     public function adminLogin(){
         return view('adminViews.adminLog');
     }
+
+    public function verifyLogin(Request $req){
+
+        $user = DB::table('user')
+                ->where('email', $req->email)
+                ->where('password', $req->password)
+                ->first();
+
+        $arrUserData = (array) $user;                                 //typeCasting
+        //print_r($arrUD); 
+        //echo count($arrUserData);
+
+        if(count($arrUserData) > 0){
+    		$req->session()->put('email', $arrUserData['email']);
+            $req->session()->put('type', $arrUserData['type']);
+
+            if($req->session()->get('type') == 'customer'){
+                return redirect()->route('customer.index');
+            }
+    		
+    	}else{
+    		$req->session()->flash('msg', 'Invalid Email/password. Try again!');
+    		return redirect('/login');
+    	}
 
     public function verifyAdmin(Request $req){
         $admin=adminpiModel::where('email',$req->email)
@@ -49,5 +77,8 @@ class loginController extends Controller
                     $req->session()->flash('msg', 'invalid username or password');
                     return redirect()->route('adminLogin');
                 }
+
     }
 }
+
+

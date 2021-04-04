@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -16,21 +17,48 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return ('welcome');
 });
+
+
+Route::get('/login',function () { return view('login.index'); })->name('generalLoginPage');
+Route::post('/login','loginController@verifyLogin')->name('verifyLogin');
+Route::get('/logout','logoutController@index')->name('logout');
+
+
+//customer
+Route::group(['middleware'=>['sess']], function(){
+    Route::get('/dashboard','customerController@dashboard')->name('customer.index');
+    Route::get('/pending_orders','customerController@pendingOrders')->name('customer.pending_orders');
+    Route::get('/order_history','customerController@orderHistory')->name('customer.order_history');
+    Route::get('/cart','customerController@cart')->name('customer.cart');
+    Route::get('/wishlist','customerController@wishlist')->name('customer.wishlist');
+
+    Route::get('/settings','customerController@settings')->name('customer.settings');
+    Route::post('/settings','customerController@updateAccountInfo')->name('customer.updateAccountInfo');
+    Route::get('/report','customerController@reportProblem')->name('customer.report');
+
+    Route::get('/cancelorder/{id}','customerController@cancelOrder');
+    Route::get('/remove_from_cart/{id}','customerController@removeFromCart');
+    Route::get('/confirm_cart/{id}','customerController@confirmCart');
+
+    Route::get('/viewproduct/{id}','customerController@viewProduct')->name('customer.viewProduct');
+    Route::get('/remove_from_wishlist/{id}','customerController@removeFromWishlist');
+
+    Route::get('/search_product_ajax', 'customerController@searchProduct')->name('customer.searchProduct');
+});
+
+
+
 //Route::get('/login', 'loginC@index')->name('login');
 //Route::get('/login', [loginC::class, 'index']);
-
-
 //Route::get('/login', 'seller\loginController@index');
 //Route::post('/login', 'seller\loginController@verify');
-Route::get('/logout', 'seller\logoutController@index')->name('logout');
-
-
 //Route::get('/seller', 'seller\profileController@index');
+
 Route::group(['middleware' => ['session']], function () {
 
-
+    Route::get('/logout', 'seller\logoutController@index')->name('logout');
     Route::get('/seller/addProduct', 'seller\productController@index');
     Route::post('/seller/addProduct', 'seller\productController@addProduct');
 
@@ -73,7 +101,12 @@ Route::group(['middleware' => ['session']], function () {
     
     //Retail Seller
     Route::get('/logout', 'retailseller\logoutController@index')->name('logout');
+  
+  });
+  
 
+  
+  
 Route::group(['middleware' => ['session']], function () {
 
 
@@ -143,6 +176,12 @@ Route::post('/admin/retail/regi','adminRegistrationController@registrationOfSell
 Route::get('/logout','logoutController@index')->name('logout');
 
 
+Route::get('/admin/profile','adminController@adminProfile')->name('adminProfile');
+Route::get('/admin/profile/PersonalInfo','adminController@editAdminPresonalInfo')->name('editAdminPresonalInfo');
+Route::get('/admin/profile/pic','adminController@editAdminProfilePic')->name('editAdminProfilePic'); 
+
+
+
 Route::get('/admin/adminRegi', 'adminRegistrationController@adminRegistrationview')->name('adminRegistration');
 Route::post('/admin/adminRegi', 'adminRegistrationController@adminRegistration');
 Route::get('/admin/retail/regi', 'adminRegistrationController@registrationOfSellerRView')->name('registrationOfSellerR');
@@ -192,4 +231,5 @@ Route::get('/admin/list/product','adminController@adminProductList')->name('admi
 Route::get('/admin/list/order','adminController@adminorderList')->name('adminorderList');
 
 });
+
 
